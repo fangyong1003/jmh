@@ -21,8 +21,12 @@
 </template>
 
 <script>
-import { XInput, Group, XButton, Cell, Loading, Alert ,Box } from 'vux'
+import API from '@/api/api_jmh'
+import { XInput, Group, XButton, Cell, Loading, Alert ,Box,Toast } from 'vux'
 export default {
+  created(){
+    this.dos();
+  },
   components: {
     XInput,
     XButton,
@@ -31,7 +35,8 @@ export default {
     Alert,
     Loading,
     XButton,
-    Box
+    Box,
+    Toast
   },
   data () {
     return {
@@ -39,12 +44,31 @@ export default {
       mobile: '',
       name:'',
       show1:false,
-      text1:'请稍等'
+      text1:'请稍等',
+      id:1,
+      mortgagepage:2,
     }
   },
   methods: {
     submit(){
         this.show1 = true
+    },
+    dos(){
+      let postData = {
+          id:this.id,
+          pageNum:this.mortgagepage,
+          pageSize:10,
+        }
+        API.getmortgageslists(postData).then((res)=>{
+          if(res.code=='000000'){
+            console.log(res.data);
+          }else{
+            this.$vux.toast.show({
+             text: res.msg,
+             type:'warn',
+            })
+          }
+        })
     }
   }
 }

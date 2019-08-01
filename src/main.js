@@ -6,11 +6,11 @@ import router from "./router";
 import App from './App'
 import store from "./store";
 import { WechatPlugin,AjaxPlugin  } from 'vux'
+import  { ToastPlugin } from 'vux'
+Vue.use(ToastPlugin)
 import './assets/style.css';
 Vue.use(WechatPlugin)
 Vue.use(AjaxPlugin)
-console.log(Vue.wechat)
-
 FastClick.attach(document.body)
 
 Vue.config.productionTip = false
