@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>网站</title>
+<link rel="stylesheet" type="text/css" href="./assets/style.css">
+</head>
+<body style="">
+
+<div class="m-head">
+	<div class="m-head-bar">
+		<div class="c-wrapper">
+			<a href=" #">帮助中心</a>
+			<a href=" #">登录</a>
+			<span>|</span>
+			<a href=" #">免费入驻</a>
+		</div>
+	</div>
+	<div class="m-head-nav">
+		<ul class="c-wrapper">
+			<li class="m-head-nav-logo">
+				<a href=" #"><img src="./assets/logo.png" alt="LOGO"></a>
+			</li>
+
+			<li class="m-head-nav-item  active">
+				<a href=" #">首页</a>
+			</li>
+
+			<li class="m-head-nav-item  ">
+				<a href=" #">信用服务</a>
+			</li>
+
+			<li class="m-head-nav-item  ">
+				<a href=" #">行业方案</a>
+			</li>
+
+			<li class="m-head-nav-item  ">
+				<a href=" #">产品中心</a>
+			</li>
+
+			<li class="m-head-nav-item  ">
+				<a href=" #">开发接入</a>
+			</li>
+
+			<li class="m-head-nav-item m-head-nav-right ">
+				<a href=" #">我的商家服务</a>
+			</li>
+
+		</ul>
+	</div>
+</div>
+<div class="index-top">
+	<div class="m-carousel slideBox">
+		<div class="bd">
+			<div class="tempWrap" style="overflow:hidden; position:relative; width:100%">
+					<ul class="m-carousel-list" style="width: 100%; position: relative; overflow: hidden; padding: 0px; margin: 0px;">
+						<li style="background-image: url('./assets/img/1.jpg'); float: left; width: 100%;">
+							<a href=" #">
+								<h2 class="c-line-clamp m-carousel-title">“信用+”是下一个十年最大的商业红利</h2>
+								<p class="c-line-clamp m-carousel-note">信用驱动的消费升级趋势</p>
+								<p class="m-carousel-btn">了解更多</p>
+							</a>
+						</li>
+						<li style="background-image: url('./assets/img/2.jpg'); float: left; width: 100%;">
+							<a href=" #">
+								<h2 class="c-line-clamp m-carousel-title">芝麻企业信用招募令</h2>
+								<p class="c-line-clamp m-carousel-note">共享企业福利 助力小微成长</p>
+								<p class="m-carousel-btn">了解更多</p>
+							</a>
+						</li>
+				</ul>
+			</div>
+		</div>
+		<div class="c-carousel-dot hd"><span class=""></span><span class="active"></span></div>
+	</div>
+	<div class="index-top-bar">
+		<div class="c-wrapper">
+			<div class="c-row">
+				<div class="c-col16 index-top-news">
+					<h6>芝麻新闻</h6>
+					<ul class="c-gap-top-small">
+
+						<li class="c-line-clamp">
+							<a href=" #">· 信用无形资产可“变现”阿里巴巴企业诚信体系引入芝麻信用</a>
+						</li>
+
+						<li class="c-line-clamp">
+							<a href=" #">· 我国381个城市已开通信用免押服务</a>
+						</li>
+
+					</ul>
+				</div>
+				<div class="c-col4 index-top-media">
+					<h6>关注我们</h6>
+					<div class="c-gap-top-small">
+						<i class="c-icon"><div class="index-top-media-qrcode index-top-media-qrcode-alipay">关注支付宝生活号</div></i>
+						<i class="c-icon"><div class="index-top-media-qrcode index-top-media-qrcode-wechat">关注公众号</div></i>
+						<i class="c-icon"><div class="index-top-media-qrcode index-top-media-qrcode-weibo">关注微博</div></i>
+					</div>
+				</div>
+				<div class="c-col4 index-top-tel">
+					<h6>服务热线</h6>
+					<p class="c-gap-top">
+						<a href=" #">0571-88158055</a> 转 2</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="content">
+
+
+
+</div>
+<script src="./assets/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="./assets/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	jQuery(".slideBox").slide({
+		mainCell: ".bd ul",
+		titCell: ".hd span",
+		titOnClassName: "active",
+		effect: "left",
+		autoPlay: true,
+		trigger: "click"
+	});
+	window.onscroll=function(){
+　　var t =document.documentElement.scrollTop||document.body.scrollTop; //变量t就是滚动条滚动时，到顶部的距离
+　　var left =$(".m-head-nav");
+		if( t >=650) {     //当拖动到距离顶部100px处时，左边导航固定，不随滚动条滚动
+       　　left.addClass("floatbar");
+　　}else{
+        left.removeClass("floatbar");
+}}
+</script>
+</body>
+</html>
