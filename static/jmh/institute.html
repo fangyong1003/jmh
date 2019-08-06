@@ -8,14 +8,6 @@
 <body style="">
 
 <div class="m-head">
-	<!-- <div class="m-head-bar">
-		<div class="c-wrapper">
-			<a href=" #">帮助中心</a>
-			<a href=" #">登录</a>
-			<span>|</span>
-			<a href=" #">免费入驻</a>
-		</div>
-	</div> -->
 	<div class="m-head-nav">
 		<ul class="c-wrapper">
 			<li class="m-head-nav-logo">
@@ -30,37 +22,37 @@
 				<a href=" #">军才联盟</a>
 			</li>
 
-			<li class="m-head-nav-item  m-head-nav-right ">
+			<li class="m-head-nav-item  m-head-nav-right active">
 				<a href="./institute.html">军才学院</a>
 			</li>
-			<li class="m-head-nav-item  m-head-nav-right active">
+			<li class="m-head-nav-item  m-head-nav-right ">
 				<a href="./index.html">首页</a>
 			</li>
 		</ul>
 	</div>
 </div>
-<div class="index-top">
-	<div class="m-carousel slideBox">
-		<div class="bd">
-			<div class="tempWrap" style="overflow:hidden; position:relative; width:100%">
-					<ul class="m-carousel-list" style="width: 100%; position: relative; overflow: hidden; padding: 0px; margin: 0px;">
-						<li style="background-image: url('./assets/img/banner.png'); float: left; width: 100%;"></li>
-						<li style="background-image: url('./assets/img/2.jpg'); float: left; width: 100%;"></li>
-				</ul>
-			</div>
-		</div>
-		<div class="c-carousel-dot hd"><span class=""></span><span class="active"></span></div>
-	</div>
+<div>
+	<img src="./assets/img/banner2.jpg" style="width:100%">
 </div>
 <div class="content" >
-	<img src="./assets/img/content.jpg" style="width:100%;">
+	<img src="./assets/img/content2.jpg" style="width:100%;">
 </div>
 <div class="footer">
-	
+	<div class="sot">
 
+	</div>
 </div>
 <script src="./assets/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="./assets/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+	jQuery(".slideBox").slide({
+		mainCell: ".bd ul",
+		titCell: ".hd span",
+		titOnClassName: "active",
+		effect: "left",
+		autoPlay: true,
+		trigger: "click"
+	});
 	window.onscroll=function(){
 　　var t =document.documentElement.scrollTop||document.body.scrollTop; //变量t就是滚动条滚动时，到顶部的距离
 　　var left =$(".m-head-nav");
