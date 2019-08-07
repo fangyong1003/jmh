@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>网站</title>
+<title>军梦汇</title>
+<link rel="icon" href="./assets/favicon.ico" sizes="32x32">
 <link rel="stylesheet" type="text/css" href="./assets/style.css">
 </head>
 <body style="">
@@ -14,12 +15,12 @@
 				<a href=" #"><img src="./assets/logo.png" alt="LOGO" ></a>
 			</li>
 
-			<li class="m-head-nav-item  m-head-nav-right">
+			<li id="p1" class="m-head-nav-item  m-head-nav-right">
 				<a href=" #">联系我们</a>
 			</li>
 
 			<li class="m-head-nav-item  m-head-nav-right">
-				<a href=" #">军才联盟</a>
+					<a href="./union.html">军才联盟</a>
 			</li>
 
 			<li class="m-head-nav-item  m-head-nav-right active">
@@ -39,20 +40,11 @@
 </div>
 <div class="footer">
 	<div class="sot">
-
+		<img src="./assets/img/footer.jpg" style="width:100%;">
 	</div>
 </div>
 <script src="./assets/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
-<script src="./assets/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-	jQuery(".slideBox").slide({
-		mainCell: ".bd ul",
-		titCell: ".hd span",
-		titOnClassName: "active",
-		effect: "left",
-		autoPlay: true,
-		trigger: "click"
-	});
 	window.onscroll=function(){
 　　var t =document.documentElement.scrollTop||document.body.scrollTop; //变量t就是滚动条滚动时，到顶部的距离
 　　var left =$(".m-head-nav");
@@ -61,6 +53,11 @@
 　　}else{
         left.removeClass("floatbar");
 }}
+$("#p1").click(function() {
+	 $("html, body").animate({
+		 scrollTop: $(".footer").offset().top }, {duration: 500,easing: "swing"});
+	 return false;
+ });
 </script>
 </body>
 </html>
