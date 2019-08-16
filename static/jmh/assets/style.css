@@ -370,6 +370,7 @@ ul {
 	width: 1190px;
 	margin: 0 auto;
 	background: #fff;
+	position: relative;
 }
 .floatbar{
 	position: fixed;
@@ -377,6 +378,7 @@ ul {
 	border-bottom:2px solid #d5d5d5;
 }
 .footer{
+	margin-top: 100px;
 	background: #1e6eb7;
 	color: #fff;
 }
@@ -402,6 +404,43 @@ ul {
 	position:fixed;
 	background: #fff;
 	right: 0;
-	width: 250px;
+	width: 200px;
 	border:1px solid #d5d5d5;
+	z-index: 99;
+}
+.boxs{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	position: absolute;
+	top:-20px;
+	z-index: 1;
+	left: 475px;
+}
+.zuo{
+	width:0;
+ height:0;
+ border-top:20px solid transparent;
+ border-bottom:20px solid transparent;
+ border-right:20px solid #1e6eb7;
+}
+.you{
+    width:0;
+    height:0;
+    border-top:20px solid transparent;
+    border-bottom:20px solid transparent;
+    border-left:20px solid #1e6eb7;
+}
+.titleson{
+	background: #1e6eb7;
+	width: 200px;
+	height: 40px;
+	color: #fff;
+	line-height: 40px;
+	text-align: center;
+}
+.details{
+	border: 2px solid #1e6eb7;
+	padding: 40px;
+	color: #333;
+	margin-top: 80px;
 }
