@@ -444,3 +444,16 @@ ul {
 	color: #333;
 	margin-top: 80px;
 }
+.titles{
+	text-align: center;
+	margin-top: 50px;
+}
+.titleso{
+	border-bottom: 2px solid #1e6eb7;
+	color: #1e6eb7;
+	width: 150px;
+	margin: 0 auto;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 40px;
+}
