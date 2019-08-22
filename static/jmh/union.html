@@ -73,21 +73,6 @@
 	</div>
 </div>
 <script src="./assets/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-	window.onscroll=function(){
-　　var t =document.documentElement.scrollTop||document.body.scrollTop; //变量t就是滚动条滚动时，到顶部的距离
-　　var left =$(".m-head-nav");
-		if( t >=600) {     //当拖动到距离顶部100px处时，左边导航固定，不随滚动条滚动
-       　　left.addClass("floatbar");
-　　}else{
-        left.removeClass("floatbar");
-}}
-
-$(document).ready(function(){
-	var h = document.documentElement.clientWidth;
-	$(".leftbar").css("top",h/4+"px");
-});
-
-</script>
+<script src="./assets/scroll.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
