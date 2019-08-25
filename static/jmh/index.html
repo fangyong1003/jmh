@@ -54,12 +54,12 @@
 </div>
 <div class="content" >
 	<div class="titles">
-			<div class="titleso">军梦汇简介</div>
+			<div class="titleso">关于军梦</div>
 	</div>
 		<div style="margin-top:30px">
 			“军梦汇”是国内首家依托社会力量创办的退役军人服务平台，社团+公司+基地的运营模式，军梦汇致力打造创新型退役军人服务平台领军品牌为目标，以提升退役军人的核心竞争力为己任，以汇才筑梦，情怀创造价值为理念。军梦汇打造的“退役军人职教培训C2B平台”结合新一代的网络信息技术开创退役军人培训和就业创业指导的新局面并填补了我国在退役军人就业创业培训方面社会化服务的空白。
 		</div>
-		<div>“军梦汇”—C2B平台，运用了网络媒体及先进的移动端信息技术，加上经验丰富的专业顾问队伍，提供集公益活动、招生招聘、教育培训、人才服务于一体的全方位专业化军才服务。平台服务：军才联盟、军才学院、军梦网。截止目前全国10多个城市设有服务机构。院的成长需要各位贤达的见证。众志成城，军才联盟愿与各位同仁一起携手为建设一流的创新型军才学院而不断奋斗！
+		<div>  “军梦汇”—C2B平台，运用了网络媒体及先进的移动端信息技术，加上经验丰富的专业顾问队伍，提供集公益活动、招生招聘、教育培训、人才服务于一体的全方位专业化军才服务。平台服务：军才联盟、军才学院、军梦网。截止目前全国10多个城市设有服务机构。 
 		</div>
 </div>
 <div class="content" >
@@ -112,6 +112,7 @@
 </div>
 <script src="./assets/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
 <script src="./assets/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="./assets/scroll.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 jQuery(".slideBox").slide({
 	mainCell: ".bd ul",
@@ -121,18 +122,6 @@ jQuery(".slideBox").slide({
 	autoPlay: true,
 	trigger: "click"
 });
-$(document).ready(function(){
-	var h = document.documentElement.clientWidth;
-	$(".leftbar").css("top",h/4+"px");
-});
-	window.onscroll=function(){
-　　var t =document.documentElement.scrollTop||document.body.scrollTop; //变量t就是滚动条滚动时，到顶部的距离
-　　var left =$(".m-head-nav");
-		if( t >=600) {
-       　　left.addClass("floatbar");
-　　}else{
-        left.removeClass("floatbar");
-}}
 </script>
 </body>
 </html>
