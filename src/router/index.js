@@ -1,20 +1,92 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/login'
-import Main from '@/components/main'
+import Main from '@/pages/main'
+import Mainson from '@/pages/main/mainson'
+import Mine from '@/pages/mine'
+import About from '@/pages/mine/about'
+import Learn from '@/pages/learn'
+import NotFound from '@/pages/404'
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   routes: [
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      meta: {
+        title: '登录'
+      }
     },
     {
-      path: '/main',
+      path: '*',
+      component: NotFound,
+      meta: {
+        title: '404'
+      }
+    },
+    {
+      path: '/',
       name: 'main',
-      component: Main
-    }
+      component: Main,
+      meta: {
+        title: '军梦汇'
+      }
+    },
+    {
+      path: '/main/mainson',
+      name: 'mainson',
+      component:Mainson,
+      meta: {
+        title: '加入军梦汇'
+      }
+    },
+    {
+      path: '/learn',
+      name: 'learn',
+      component: Learn,
+      meta: {
+        title: '军才学院'
+      }
+    },
+    {
+      path: '/mine',
+      name: 'mine',
+      component: Mine,
+      meta: {
+        title: '军梦汇'
+      }
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About,
+      meta: {
+        title: '关于军梦汇'
+      }
+    },
     ]
 })
+
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title;
+    if (to.path.startsWith('/login')) {
+      window.localStorage.removeItem('access-user')
+      next()
+    } else {
+      // let user = window.sessionStorage.getItem('userName');
+      // if (!user) {
+      //   next({path: '/login'})
+      // } else {
+      //   next()
+      // }
+      next();
+    }
+  }
+
+});
+
+export default router
