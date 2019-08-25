@@ -10,6 +10,7 @@ import NotFound from '@/pages/404'
 Vue.use(Router)
 
 let router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/login',
