@@ -16,10 +16,12 @@ let empower = () =>{
     console.log(location.href);
     if(getKey('_wechat_id')){return}
     Wxmp.oauth({code: code}).then((res)=>{
-      setKey('_wechat_id',res.data.openid);
-      setKey('_wechat_headimgurl',res.data.headimgurl);
-      setKey('_wechat_nickname',res.data.nickname);
-      setKey('_wechat_sex',res.data.sex);
+      if(res.statusCode =='0'){
+        console.log(res.weChatUserInfo.headimgurl);
+        this.$store.dispatch('userInfoAction',res.weChatUserInfo);
+        setKey('_wechat_headimgurl',res.weChatUserInfo.headimgurl);
+        setKey('_wechat_nickname',res.weChatUserInfo.nickname);
+      }
     }).catch(e => {
       console.log(e.message);
     });

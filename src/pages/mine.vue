@@ -54,13 +54,14 @@ export default {
   data () {
     return {
       index:0,
-      headerUrl:'https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg',
-      name:'',
+      headerUrl:this.$store.state.userInfo.headimgurl,
+      name:this.$store.state.userInfo.name,
     }
   },
-  mounted:function(){
-    this.headerUrl = getKey('_wechat_headimgurl');
-    this.name = getKey('_wechat_nickname');
+  created:function(){
+    let headerUrl = getKey('_wechat_headimgurl');
+    let name = getKey('_wechat_nickname');
+    console.log("ssssss"+name);
   },
   methods: {
     tel(){
