@@ -11,13 +11,14 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/risk/*': {
-        target: 'http://172.16.33.20:9082',//设置你调用的接口域名和端口号 别忘了加http 52 16:6080
+      '/jmh/*': {
+        target: 'http://www.junmenghui.com',//设置你调用的接口域名和端口号 别忘了加http 52 16:6080
+        changeOrigin: true,
       }
     },
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    host: '127.0.0.1', // can be overwritten by process.env.HOST
+    port: 80, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
@@ -30,7 +31,7 @@ module.exports = {
     // If true, eslint errors and warnings will also be shown in the error overlay
     // in the browser.
     showEslintErrorsInOverlay: false,
-
+    disableHostCheck: true,
     /**
      * Source Maps
      */

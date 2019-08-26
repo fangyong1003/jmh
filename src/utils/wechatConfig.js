@@ -2,7 +2,6 @@
 // Vue.use(WechatPlugin)
 // Vue.use(AjaxPlugin)
 
-import Wxmp from '../api/wx
 export function get_wechat_config (that) {
   let postData = {
     url: location.href.split('#')[0]
