@@ -12,13 +12,15 @@ function GetQueryString(name)
 let empower = () =>{
   var code=GetQueryString("code");
   if(code !=null && code.toString().length>1 || getKey('_wechat_id')){
-    if(getKey('_wechat_id')){return}
+    // if(getKey('_wechat_id')){return}
     Wxmp.oauth({code: code}).then((res)=>{
-      if(res.statusCode =='0'){
-        console.log(res.weChatUserInfo.headimgurl);
-        this.$store.dispatch('userInfoAction',res.weChatUserInfo);
+      console.log(res);
+      if(res.statusCode ==0){
+        console.log(this.$store);
+        setKey('_wechat_id',res.weChatUserInfo.openid);
         setKey('_wechat_headimgurl',res.weChatUserInfo.headimgurl);
         setKey('_wechat_nickname',res.weChatUserInfo.nickname);
+        this.$store.dispatch('userInfoAction',res.weChatUserInfo);
       }
     }).catch(e => {
       console.log(e.message);

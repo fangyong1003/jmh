@@ -9,6 +9,7 @@ import About from '@/pages/mine/about'
 import Learn from '@/pages/learn'
 import Learnson from '@/pages/learn/learnson'
 import NotFound from '@/pages/404'
+import { empower } from '@/utils/getWechatUserInfo.js'
 Vue.use(Router)
 
 let router = new Router({
@@ -19,7 +20,8 @@ let router = new Router({
       name: 'login',
       component: Login,
       meta: {
-        title: '登录'
+        title: '登录',
+        require:true
       }
     },
     {
@@ -50,7 +52,7 @@ let router = new Router({
       name: 'jobdetail',
       component:Jobdetail,
       meta: {
-        title: '职位详情'
+        title: '职位详情',require:true
       }
     },
     {
@@ -66,7 +68,7 @@ let router = new Router({
       name: 'learnson',
       component: Learnson,
       meta: {
-        title: '课程详情'
+        title: '课程详情',require:true
       }
     },
     {
@@ -74,7 +76,7 @@ let router = new Router({
       name: 'mine',
       component: Mine,
       meta: {
-        title: '军梦汇'
+        title: '军梦汇',require:true
       }
     },
     {
@@ -92,16 +94,10 @@ let router = new Router({
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title;
-    if (to.path.startsWith('/login')) {
-      window.localStorage.removeItem('access-user')
+    if (to.meta.require) {
+      empower();
       next()
     } else {
-      // let user = window.sessionStorage.getItem('userName');
-      // if (!user) {
-      //   next({path: '/login'})
-      // } else {
-      //   next()
-      // }
       next();
     }
   }

@@ -7,13 +7,12 @@ import App from './App'
 import store from "./store";
 import { WechatPlugin,AjaxPlugin  } from 'vux'
 import  { ToastPlugin } from 'vux'
-import { empower } from '@/utils/getWechatUserInfo.js'
+// import { empower } from '@/utils/getWechatUserInfo.js'
 Vue.use(ToastPlugin)
 import './assets/style.css';
 Vue.use(WechatPlugin)
 Vue.use(AjaxPlugin)
 FastClick.attach(document.body)
-console.log(Vue.wechat)
 Vue.config.productionTip = false
 // empower();
 /* eslint-disable no-new */
