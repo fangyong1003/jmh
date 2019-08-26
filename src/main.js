@@ -15,7 +15,7 @@ Vue.use(AjaxPlugin)
 FastClick.attach(document.body)
 console.log(Vue.wechat)
 Vue.config.productionTip = false
-empower();
+// empower();
 /* eslint-disable no-new */
 new Vue({
   router,

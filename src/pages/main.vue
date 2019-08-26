@@ -10,7 +10,7 @@
       </group>
       <div style="padding-bottom:70px;">
 
-       <flexbox :gutter="0" style="background:#fff;margin-top:10px">
+       <flexbox :gutter="0" style="background:#fff;margin-top:10px" @click="job">
           <flexbox-item :span="2/3">
             <div class="flex-demo">
              <div >
@@ -91,6 +91,9 @@ export default {
     },
     tojoin(){
         this.$router.push('')
+    },
+    job(){
+        this.$router.push('/jobdetail')
     }
   }
 }

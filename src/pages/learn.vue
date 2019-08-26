@@ -2,13 +2,13 @@
   <div >
     <swiper :auto="true" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
     <div style="padding-bottom:70px;">
-      <div class="column">
+      <div class="column" @click="go">
           <div class="imgbox" >
             <img src="https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg" >
           </div>
           <div class="content">
             <span class="ptitle">军人专属 免费学习</span>
-            <div class="btn">
+            <div class="btn" >
               立即免费学习
             </div>
           </div>
@@ -96,7 +96,10 @@ export default {
   },
   methods: {
     onIndexChange(index){
-       this.index = index
+       this.index = index;
+    },
+    go(){
+      this.$router.push('/learnson');
     }
   }
 }

@@ -10,10 +10,8 @@ function GetQueryString(name)
 
 //微信用户授权
 let empower = () =>{
-  console.log(location.href);
   var code=GetQueryString("code");
   if(code !=null && code.toString().length>1 || getKey('_wechat_id')){
-    console.log(location.href);
     if(getKey('_wechat_id')){return}
     Wxmp.oauth({code: code}).then((res)=>{
       if(res.statusCode =='0'){

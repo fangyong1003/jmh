@@ -3,9 +3,11 @@ import Router from 'vue-router'
 import Login from '@/components/login'
 import Main from '@/pages/main'
 import Mainson from '@/pages/main/mainson'
+import Jobdetail from '@/pages/main/jobdetail'
 import Mine from '@/pages/mine'
 import About from '@/pages/mine/about'
 import Learn from '@/pages/learn'
+import Learnson from '@/pages/learn/learnson'
 import NotFound from '@/pages/404'
 Vue.use(Router)
 
@@ -44,11 +46,27 @@ let router = new Router({
       }
     },
     {
+      path: '/main/jobdetail',
+      name: 'jobdetail',
+      component:Jobdetail,
+      meta: {
+        title: '职位详情'
+      }
+    },
+    {
       path: '/learn',
       name: 'learn',
       component: Learn,
       meta: {
         title: '军才学院'
+      }
+    },
+    {
+      path: '/learnson',
+      name: 'learnson',
+      component: Learnson,
+      meta: {
+        title: '课程详情'
       }
     },
     {
