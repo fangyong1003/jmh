@@ -1,8 +1,8 @@
 <template>
   <div >
         <div class="vantabox">
-          <img src="https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg" class="vanta">
-          <span class="name">原味啊</span>
+          <img :src="headerUrl" class="vanta">
+          <span class="name">{{name}}</span>
         </div>
         <group>
           <cell  is-link>
@@ -42,6 +42,7 @@
 <script>
 import API from '@/api/api_jmh'
 import {Swiper,Tabbar, TabbarItem,Group,Cell  } from 'vux'
+import {setKey,getKey} from '@/utils/token';
 export default {
   components: {
     Swiper,
@@ -53,7 +54,13 @@ export default {
   data () {
     return {
       index:0,
+      headerUrl:'https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg',
+      name:'',
     }
+  },
+  mounted:function(){
+    this.headerUrl = getKey('_wechat_headimgurl');
+    this.name = getKey('_wechat_nickname');
   },
   methods: {
     tel(){
