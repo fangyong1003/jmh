@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import store from "../store/index"
 import { getToken, getKey, setKey } from '@/utils/token';
 import Wxmp from '../api/wxmp'
 function GetQueryString(name)
@@ -16,11 +17,10 @@ let empower = () =>{
     Wxmp.oauth({code: code}).then((res)=>{
       console.log(res);
       if(res.statusCode ==0){
-        console.log(this.$store);
+        store.dispatch('userInfoAction',res.weChatUserInfo);
         setKey('_wechat_id',res.weChatUserInfo.openid);
         setKey('_wechat_headimgurl',res.weChatUserInfo.headimgurl);
         setKey('_wechat_nickname',res.weChatUserInfo.nickname);
-        this.$store.dispatch('userInfoAction',res.weChatUserInfo);
       }
     }).catch(e => {
       console.log(e.message);
@@ -29,6 +29,7 @@ let empower = () =>{
     window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa18ab49a349b53d0&redirect_uri=" +location.href+ "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
   }
 }
+
 export { empower }
 
 

@@ -4,7 +4,7 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import router from "./router";
 import App from './App'
-import store from "./store";
+import store from "./store/index";
 import { WechatPlugin,AjaxPlugin  } from 'vux'
 import  { ToastPlugin } from 'vux'
 // import { empower } from '@/utils/getWechatUserInfo.js'

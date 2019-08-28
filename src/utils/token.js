@@ -1,30 +1,30 @@
 export function setToken (token) {
-  localStorage.setItem('__token__', token);
+  window.localStorage.setItem('__token__', token);
 }
 
 export function getToken () {
-  return localStorage.getItem('__token__') || '';
+  return window.localStorage.getItem('__token__') || '';
 }
 
 export function removeToken() {
-  localStorage.removeItem('__token__');
+  window.localStorage.removeItem('__token__');
 }
 export function removeKey(key) {
-  localStorage.removeItem(key);
+  window.localStorage.removeItem(key);
 }
 
 export function getKey (key) {
-  return localStorage.getItem(key) || '';
+  return window.localStorage.getItem(key) || '';
 }
 
 export function setKey (key,val) {
-  localStorage.setItem(key, val);
+  window.localStorage.setItem(key, val);
 }
 
 export function setSessionKey (key,val) {
-  sessionStorage.setItem(key, val);
+  window.sessionStorage.setItem(key, val);
 }
 
 export function getSessionKey (key,val) {
-  sessionStorage.getItem(key);
+  window.sessionStorage.getItem(key);
 }
