@@ -1,14 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/login'
-import Main from '@/pages/main'
+import Main from '@/pages/individual/main'
 import Mainson from '@/pages/main/mainson'
 import Jobdetail from '@/pages/main/jobdetail'
-import Mine from '@/pages/mine'
+import Mine from '@/pages/individual/mine'
 import About from '@/pages/mine/about'
-import Learn from '@/pages/learn'
+import Learn from '@/pages/individual/learn'
 import Learnson from '@/pages/learn/learnson'
 import NotFound from '@/pages/404'
+
+
+import Joblist from '@/pages/company/joblist'
+import Addjob from '@/pages/company/addjob'
 import { empower } from '@/utils/getWechatUserInfo.js'
 Vue.use(Router)
 
@@ -85,6 +89,22 @@ let router = new Router({
       component: About,
       meta: {
         title: '关于军梦汇'
+      }
+    },
+    {
+      path: '/company/joblist',
+      name: 'joblist',
+      component: Joblist,
+      meta: {
+        title: '已发布的招聘'
+      }
+    },
+    {
+      path: '/company/addjob',
+      name: 'addjob',
+      component: Addjob,
+      meta: {
+        title: '发布招聘信息'
       }
     },
     ]

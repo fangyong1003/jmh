@@ -55,15 +55,15 @@
     </div>
      <tabbar  class="bar">
       <tabbar-item link="/">
-          <img slot="icon" src="../assets/img/home.png">
+          <img slot="icon" src="@/assets/img/home.png">
           <span slot="label">首页</span>
       </tabbar-item>
       <tabbar-item selected  link="/learn">
-         <img slot="icon" src="../assets/img/learns.png">
+         <img slot="icon" src="@/assets/img/learns.png">
          <span slot="label">学习</span>
        </tabbar-item>
        <tabbar-item  link="/mine">
-         <img slot="icon" src="../assets/img/mine.png">
+         <img slot="icon" src="@/assets/img/mine.png">
          <span slot="label">我的</span>
        </tabbar-item>
     </tabbar>

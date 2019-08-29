@@ -3,7 +3,7 @@
     <swiper :auto="true" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
     <group style="margin-top:-20px;" >
         <cell is-link link="/main/mainson">
-          <img slot="icon" width="25" src="../assets/img/people.png">
+          <img slot="icon" width="25" src="@/assets/img/people.png">
           <span slot="value" style="font-size:12px;color:#e70001">企业合作、导师入驻、城市合伙人</span>
           <span slot="title" style="font-size:14px;">加入军梦会</span>
         </cell>
@@ -31,7 +31,7 @@
         </flexbox-item>
           <flexbox-item>
             <div class="pp">
-              <img src="../assets/img/homes.png">
+              <img src="@/assets/img/homes.png">
             </div>
         </flexbox-item>
         </flexbox>
@@ -40,15 +40,15 @@
       </div>
      <tabbar class="bar">
         <tabbar-item selected>
-            <img slot="icon" src="../assets/img/homes.png">
+            <img slot="icon" src="@/assets/img/homes.png">
             <span slot="label">首页</span>
         </tabbar-item>
         <tabbar-item  link="/learn">
-           <img slot="icon" src="../assets/img/learn.png">
+           <img slot="icon" src="@/assets/img/learn.png">
            <span slot="label">学习</span>
          </tabbar-item>
          <tabbar-item  link="/mine">
-           <img slot="icon" src="../assets/img/mine.png">
+           <img slot="icon" src="@/assets/img/mine.png">
            <span slot="label">我的</span>
          </tabbar-item>
     </tabbar>
