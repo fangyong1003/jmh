@@ -55,7 +55,7 @@ export default {
     return {
       index:0,
       headerUrl:this.$store.state.userInfo.headimgurl,
-      name:this.$store.state.userInfo.name,
+      name:this.$store.state.userInfo.nickname,
     }
   },
   created:function(){
