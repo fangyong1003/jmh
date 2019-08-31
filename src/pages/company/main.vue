@@ -41,13 +41,13 @@
      <tabbar class="bar">
         <tabbar-item selected>
             <img slot="icon" src="@/assets/img/homes.png">
-            <span slot="label">首页</span>
+            <span slot="label">招聘</span>
         </tabbar-item>
-        <tabbar-item  link="/individual/learn">
+        <tabbar-item  link="/company/learn">
            <img slot="icon" src="@/assets/img/learn.png">
            <span slot="label">学习</span>
          </tabbar-item>
-         <tabbar-item  link="/individual/mine">
+         <tabbar-item  link="/company/mine">
            <img slot="icon" src="@/assets/img/mine.png">
            <span slot="label">我的</span>
          </tabbar-item>

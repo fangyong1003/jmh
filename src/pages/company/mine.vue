@@ -2,15 +2,21 @@
   <div >
         <div class="vantabox">
           <img :src="headerUrl" class="vanta">
-          <span class="name">{{name}}</span>
+          <div class="name">
+            <div>{{name}}</div>
+            <img style="margin-top:10px" src="@/assets/img/tag.png">
+          </div>
         </div>
-        <group>
-          <cell  is-link>
-            <p slot = "title">手机号</p>
-           <img slot="icon" width="20" style="display:block;margin-right:5px;" src="@/assets/img/phone.png">
-           <p slot = "value" style="font-size:12px;color:#e70001;">绑定手机号，免费获得高薪机会</p>
-         </cell>
-        </group>
+        <div class="colbox">
+          <div class="colson" @click="go(1)">
+            <img style="margin-top:18px;width:36px;" src="@/assets/img/addjob.png">
+            <div>发布招聘信息</div>
+          </div>
+          <div class="colson" @click="go(2)">
+            <img style="margin-top:18px;width:36px;height:36px;" src="@/assets/img/column.png">
+            <div>已发布招聘</div>
+          </div>
+        </div>
         <group>
           <cell  is-link @click.native="tel">
               <p slot = "title">联系军梦汇</p>
@@ -23,15 +29,15 @@
             </cell>
         </group>
      <tabbar  class="bar">
-        <tabbar-item  link="/">
+        <tabbar-item  link="/company/main">
             <img slot="icon" src="@/assets/img/home.png">
-            <span slot="label">首页</span>
+            <span slot="label">招聘</span>
         </tabbar-item>
-        <tabbar-item  link="/individual/learn">
+        <tabbar-item  link="/company/learn">
            <img slot="icon" src="@/assets/img/learn.png">
            <span slot="label">学习</span>
          </tabbar-item>
-         <tabbar-item selected link="/individual/mine">
+         <tabbar-item selected link="/company/mine">
            <img slot="icon" src="@/assets/img/mines.png">
            <span slot="label">我的</span>
          </tabbar-item>
@@ -53,17 +59,24 @@ export default {
   },
   data () {
     return {
-      headerUrl:'',
-      name:'',
+      headerUrl:'http://pic51.nipic.com/file/20141025/8649940_220505558734_2.jpg',
+      name:'原味',
     }
   },
   created:function(){
-    this.headerUrl = getKey('_wechat_headimgurl')||this.$store.state.userInfo.headimgurl;
-    this.name = getKey('_wechat_nickname')||this.$store.state.userInfo.nickname;
+    // this.headerUrl = '';
+    // this.name = '';
   },
   methods: {
     tel(){
        window.location.href="tell://4008277616"
+    },
+    go(index){
+      if(index==1){
+        this.$router.push('/company/addjob');
+      }else{
+        this.$router.push('/company/joblist');
+      }
     }
   }
 }
@@ -72,11 +85,22 @@ export default {
 .vantabox{
   height: 96px;
   background: #fff;
-  line-height: 96px;
+  border-bottom: 1px solid #e4e4e4;
+}
+.colbox{
+  height: 96px;
+  background:#fff;
+}
+.colson{
+  width: 50%;
+  float: left;
+  text-align: center;
 }
 .name{
+  float: left;
+  margin-top: 25px;
   font-size:16px;
-color:#333333;
+  color:#333333;
 }
 .vanta{
   width:65px;

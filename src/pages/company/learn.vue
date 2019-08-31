@@ -54,15 +54,15 @@
 
     </div>
      <tabbar  class="bar">
-      <tabbar-item link="/">
+      <tabbar-item link="/company/main">
           <img slot="icon" src="@/assets/img/home.png">
           <span slot="label">首页</span>
       </tabbar-item>
-      <tabbar-item selected  link="/individual/learn">
+      <tabbar-item selected  link="/company/learn">
          <img slot="icon" src="@/assets/img/learns.png">
          <span slot="label">学习</span>
        </tabbar-item>
-       <tabbar-item  link="/individual/mine">
+       <tabbar-item  link="/company/mine">
          <img slot="icon" src="@/assets/img/mine.png">
          <span slot="label">我的</span>
        </tabbar-item>

@@ -8,26 +8,61 @@
         <p slot="content" class="card-padding">
           <group>
             <x-input title="企业名称" placeholder="请输入您的姓名" v-model="value" ></x-input>
-            <x-address title="地址选择" v-model="addressValue" raw-value :list="addressData" value-text-align="right"></x-address>
+            <popup-radio title="企业规模" :options="optionh" v-model="attitude"></popup-radio>
             <popup-radio title="所属行业" :options="option" v-model="attitude"></popup-radio>
           </group>
         </p>
    </card>
+   <card >
+       <div slot="header" class="card-title">
+         <div class="bars"></div>
+         填写岗位信息
+       </div>
+       <p slot="content" class="card-padding">
+         <group>
+           <x-input title="岗位名称" placeholder="请填写岗位名称" v-model="jobname" ></x-input>
+           <x-input title="薪资（月薪）" placeholder="请填写薪资" v-model="money" ></x-input>
+           <x-address title="工作地址" v-model="addressValue" raw-value :list="addressData" value-text-align="right"></x-address>
+           <popup-radio title="经验要求" :options="options" v-model="exp"></popup-radio>
+           <popup-radio title="学历要求" :options="optione" v-model="educational"></popup-radio>
+         </group>
+       </p>
+  </card>
+  <card >
+      <div slot="header" class="card-title">
+        <div class="bars"></div>
+        填写岗位描述
+      </div>
+      <p slot="content" class="card-padding">
+        <group>
+         <x-textarea :placeholder="place" autosize v-model="detail"></x-textarea>
+       </group>
+      </p>
+ </card>
+ <div style="margin:30px;">
+    <x-button plain style="">确认发布</x-button>
+  </div>
   </div>
 </template>
 
 <script>
-import {Card,Group,,XInput,XButton,PopupRadio,ChinaAddressData,XAddress} from 'vux'
+import {Card,Group,,XInput,XButton,PopupRadio,ChinaAddressData,XAddress,XTextarea } from 'vux'
 export default {
   components: {
-    Card,Group,XInput,XButton,PopupRadio,ChinaAddressData,XAddress
+    Card,Group,XInput,XButton,PopupRadio,ChinaAddressData,XAddress,XTextarea
   },
   data () {
     return {
       value:'',
-      attitude:'A',
-      addressValue: ['浙江省', '杭州市', '滨江区'],
+      attitude:'',
+      jobname:'',
+      money:'',
+      exp:'',
+      educational:'',
+      addressValue: [],
+      detail:'',
       addressData: ChinaAddressData,
+      place:'请输入岗位的具体描述，您可以输入岗位的职责要求、岗位的福利待遇，完整的岗位描述将有助于你的招聘，请认真填写，字数不限。',
       option:[
         {key:'A',value:'农、林、牧、渔业'},
         {key:'B',value:'采矿业'},
@@ -45,6 +80,28 @@ export default {
         {key:'N',value:'水利、环境和公共设施管理业'},
         {key:'O',value:'居民服务和其他服务业'},
       ],
+      options:[
+        {key:'A',value:'经验不限'},
+        {key:'B',value:'3年以下'},
+        {key:'C',value:'3-5年'},
+        {key:'D',value:'5-10年'},
+        {key:'E',value:'10年以上'},
+      ],
+      optione:[
+        {key:'A',value:'学历不限'},
+        {key:'B',value:'初中'},
+        {key:'C',value:'中专/高中'},
+        {key:'D',value:'专科'},
+        {key:'E',value:'本科'},
+        {key:'F',value:'硕士研究生'},
+      ],
+      optionh:[
+        {key:'A',value:'少于15人'},
+        {key:'B',value:'15~50人'},
+        {key:'C',value:'150~500人'},
+        {key:'D',value:'500人~2000人'},
+        {key:'E',value:'2000人以上'},
+      ],
     }
   },
   methods: {
@@ -54,7 +111,7 @@ export default {
 </script>
 <style scoped>
 .card-padding{
-  padding: 15px 10px;
+  padding: 0px 10px;
   font-size:14px;
 color:#333333;
 }

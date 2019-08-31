@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/login'
 import Main from '@/pages/individual/main'
 import Mainson from '@/pages/main/mainson'
 import Jobdetail from '@/pages/main/jobdetail'
@@ -8,9 +7,13 @@ import Mine from '@/pages/individual/mine'
 import About from '@/pages/mine/about'
 import Learn from '@/pages/individual/learn'
 import Learnson from '@/pages/learn/learnson'
+import Bind from '@/pages/individual/bind'
 import NotFound from '@/pages/404'
 
-
+import Reg from '@/pages/company/register'
+import Cmain from '@/pages/company/main'
+import Cmine from '@/pages/company/mine'
+import Clearn from '@/pages/company/learn'
 import Joblist from '@/pages/company/joblist'
 import Addjob from '@/pages/company/addjob'
 import { empower } from '@/utils/getWechatUserInfo.js'
@@ -20,12 +23,11 @@ let router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/login',
-      name: 'login',
-      component: Login,
+      path: '/individual/bind',
+      name: 'bind',
+      component: Bind,
       meta: {
         title: '登录',
-        require:true
       }
     },
     {
@@ -60,7 +62,7 @@ let router = new Router({
       }
     },
     {
-      path: '/learn',
+      path: '/individual/learn',
       name: 'learn',
       component: Learn,
       meta: {
@@ -76,7 +78,7 @@ let router = new Router({
       }
     },
     {
-      path: '/mine',
+      path: '/individual/mine',
       name: 'mine',
       component: Mine,
       meta: {
@@ -107,6 +109,38 @@ let router = new Router({
         title: '发布招聘信息'
       }
     },
+    {
+      path: '/company/main',
+      name: 'main',
+      component: Cmain,
+      meta: {
+        title: '军梦汇'
+      }
+    },
+    {
+      path: '/company/mine',
+      name: 'mine',
+      component: Cmine,
+      meta: {
+        title: '军梦汇'
+      }
+    },
+    {
+      path: '/company/learn',
+      name: 'learn',
+      component: Clearn,
+      meta: {
+        title: '军才学院'
+      }
+    },
+    {
+      path: '/company/reg',
+      name: 'res',
+      component: Reg,
+      meta: {
+        title: '绑定号码'
+      }
+    },
     ]
 })
 
@@ -115,7 +149,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title;
     if (to.meta.require) {
-      empower();
+      // empower();
       next()
     } else {
       next();
