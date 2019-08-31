@@ -7,9 +7,9 @@
         </div>
         <p slot="content" class="card-padding">
           <group>
-            <x-input title="企业名称" placeholder="请输入您的姓名" v-model="value" ></x-input>
-            <popup-radio title="企业规模" :options="optionh" v-model="attitude"></popup-radio>
-            <popup-radio title="所属行业" :options="option" v-model="attitude"></popup-radio>
+            <x-input title="企业名称" readonly v-model="value" ></x-input>
+            <popup-radio title="企业规模" :options="optionh" v-model="compSizeKey"></popup-radio>
+            <popup-radio title="所属行业" :options="option" v-model="industryKey"></popup-radio>
           </group>
         </p>
    </card>
@@ -40,7 +40,7 @@
       </p>
  </card>
  <div style="margin:30px;">
-    <x-button plain style="">确认发布</x-button>
+    <x-button plain style="" @click="submit">确认发布</x-button>
   </div>
   </div>
 </template>
@@ -61,6 +61,8 @@ export default {
       educational:'',
       addressValue: [],
       detail:'',
+      industryKey:'',
+      compSizeKey:'',
       addressData: ChinaAddressData,
       place:'请输入岗位的具体描述，您可以输入岗位的职责要求、岗位的福利待遇，完整的岗位描述将有助于你的招聘，请认真填写，字数不限。',
       option:[
@@ -105,7 +107,34 @@ export default {
     }
   },
   methods: {
-
+    submit(){
+      let params ={
+        jobName:this.jobname,
+        salaryRange:this.money,
+        location:this.addressValue.join(','),
+        companyId:this.$store.state.company.companyId,
+        companyName:this.$store.state.company.companyName,
+        jobDesc:this.detail,
+        eduKey:this.educational,
+        industryKey:this.industryKey,
+        compSizeKey:this.compSizeKey,
+        jobExpKey:this.exp,
+      }
+      API.addjob(params).then((res)=>{
+        if (res.statusCode == 0) {
+          this.$vux.toast.show({
+            type:'success;',
+            text:'添加成功！'
+          });
+          this.$router.push("/company/joblist");
+        }else{
+          this.$vux.toast.show({
+            type:'cancel;',
+            text:res.message
+          });
+        }
+      })
+    }
   }
 }
 </script>

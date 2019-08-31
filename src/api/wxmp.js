@@ -5,13 +5,19 @@ export default {
   oauth (params) {
     return API.GET('/jmh/weChat/getWechatUserInfo', params)
   },
-  // // 用户登录
-  // login (params) {
-  //   return API.get('/apps/login', params)
-  // },
-  //
-  // // 获取JSSDK
-  // jssdk (params) {
-  //   return API.get('/apps/jssdk', params)
-  // }
+  code(params){
+    return API.GET('/jmh/weChat/sms',params)
+  },
+  bindPhone(params){
+    return API.GET('/jmh/weChat/bindPhone',params)
+  },
+  checkcode(params){
+    return  API.GET('/jmh/weChat/check',params)
+  },
+  login(params){
+    return  API.GET('/jmh/weChat/login',params)
+  },
+  addjob(params){
+    return API.GET('/jmh/weChat/newJobProvidedInfo',params);
+  }
 }

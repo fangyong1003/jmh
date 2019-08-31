@@ -5,7 +5,7 @@
           <span class="name">{{name}}</span>
         </div>
         <group>
-          <cell  is-link>
+          <cell  is-link link="/individual/bind">
             <p slot = "title">手机号</p>
            <img slot="icon" width="20" style="display:block;margin-right:5px;" src="@/assets/img/phone.png">
            <p slot = "value" style="font-size:12px;color:#e70001;">绑定手机号，免费获得高薪机会</p>
