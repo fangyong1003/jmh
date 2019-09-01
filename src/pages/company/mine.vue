@@ -59,13 +59,9 @@ export default {
   },
   data () {
     return {
-      headerUrl:'http://pic51.nipic.com/file/20141025/8649940_220505558734_2.jpg',
-      name:'原味',
+      headerUrl:this.$store.state.company.officialImage,
+      name:this.$store.state.company.companyName,
     }
-  },
-  created:function(){
-    // this.headerUrl = '';
-    // this.name = '';
   },
   methods: {
     tel(){

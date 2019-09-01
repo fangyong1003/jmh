@@ -16,11 +16,12 @@ import Cmine from '@/pages/company/mine'
 import Clearn from '@/pages/company/learn'
 import Joblist from '@/pages/company/joblist'
 import Addjob from '@/pages/company/addjob'
+import Editjob from '@/pages/company/editjob'
 import { empower } from '@/utils/getWechatUserInfo.js'
 Vue.use(Router)
 
 let router = new Router({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/individual/bind',
@@ -107,6 +108,14 @@ let router = new Router({
       component: Addjob,
       meta: {
         title: '发布招聘信息'
+      }
+    },
+    {
+      path: '/company/editjob/:id',
+      name: 'editjob',
+      component: Editjob,
+      meta: {
+        title: '编辑招聘信息'
       }
     },
     {

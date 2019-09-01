@@ -2,7 +2,7 @@
   <div class="box">
   <view-box class="signIn" bodyPaddingTop="0" bodyPaddingBottom="0">
     <group class="pp" label-width="4.5em" label-margin-right="2em" label-align="right">
-      <x-input v-model="userName" type="tel" title="账号:" is-type="china-mobile"
+      <x-input v-model="userName" type="tel" title="账号:"
                required placeholder="请输入账号"></x-input>
       <x-input v-model="password" type="tel" title="密码:"
                required placeholder="请输入密码"></x-input>
@@ -18,7 +18,7 @@
   import {
     ViewBox, XHeader, Box, XInput, XButton, Group
   } from 'vux';
-  import API from '@/api/api_jmh'
+  import API from '@/api/wxmp'
   export default {
     name: 'signIn',
     components: {
@@ -46,9 +46,10 @@
           });
           return;
         }
-        API.login({loginName:this.userName,loginPwd:this.password}).then((res)=>{
+        let params = `loginName=${this.userName}&loginPwd=${this.password}`;
+        API.login(params).then((res)=>{
           if (res.statusCode == 0) {
-            this.dispath('cpInfoAction',res.date)
+            this.$store.dispatch('cpInfoAction',res.compRole);
 						this.$router.push("/company/main");
 					}else{
 						this.$vux.toast.show({

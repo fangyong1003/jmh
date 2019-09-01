@@ -22,7 +22,7 @@
          <group>
            <x-input title="岗位名称" placeholder="请填写岗位名称" v-model="jobname" ></x-input>
            <x-input title="薪资（月薪）" placeholder="请填写薪资" v-model="money" ></x-input>
-           <x-address title="工作地址" v-model="addressValue"  :list="addressData" @on-shadow-change="onShadowChange" value-text-align="right"></x-address>
+           <x-address title="工作地址" v-model="addressValue" raw-value :list="addressData" @on-shadow-change="onShadowChange" value-text-align="right"></x-address>
            <popup-radio title="经验要求" :options="options" v-model="exp"></popup-radio>
            <popup-radio title="学历要求" :options="optione" v-model="educational"></popup-radio>
          </group>
@@ -40,22 +40,21 @@
       </p>
  </card>
  <div style="margin:30px;">
-    <x-button plain  @click.native="submit">确认发布</x-button>
+    <x-button plain @click.native="submit">确认发布</x-button>
   </div>
   </div>
 </template>
 
 <script>
 import API from '@/api/wxmp'
-import {Card,Group,,XInput,XButton,PopupRadio,ChinaAddressData,XAddress,XTextarea } from 'vux'
+import {Card,Group,XInput,XButton,PopupRadio,ChinaAddressData,XAddress,XTextarea } from 'vux'
 export default {
   components: {
     Card,Group,XInput,XButton,PopupRadio,ChinaAddressData,XAddress,XTextarea
   },
   data () {
     return {
-      value:this.$store.state.company.companyName,
-      attitude:'',
+      value:'',
       jobname:'',
       money:'',
       exp:'',
@@ -65,8 +64,7 @@ export default {
       detail:'',
       industryKey:'',
       compSizeKey:'',
-      jobId:'',
-      addressData: ChinaAddressData ,
+      addressData: ChinaAddressData,
       place:'请输入岗位的具体描述，您可以输入岗位的职责要求、岗位的福利待遇，完整的岗位描述将有助于你的招聘，请认真填写，字数不限。',
       option:[
         {key:'A',value:'农、林、牧、渔业'},
@@ -109,10 +107,35 @@ export default {
       ],
     }
   },
+  created(){
+    this.getList();
+  },
   methods: {
+    getList(){
+      API.getJobPvdByJobId({jobId:this.$route.params.id}).then((res)=>{
+        if (res.statusCode == 0) {
+          this.value = res.jobProvidedInfo.companyName;
+          this.jobname=res.jobProvidedInfo.jobName;
+          this.money=res.jobProvidedInfo.salaryRange;
+          this.exp=res.jobProvidedInfo.jobExpKey;
+          this.educational=res.jobProvidedInfo.eduKey;
+          this.detail=res.jobProvidedInfo.jobDesc;
+          this.industryKey=res.jobProvidedInfo.industryKey;
+          this.compSizeKey=res.jobProvidedInfo.compSizeKey;
+          if(res.jobProvidedInfo.location.length>0){
+              this.addressValue = res.jobProvidedInfo.location.split(',');
+          }
+        }else{
+          this.$vux.toast.show({
+            type:'cancel;',
+            text:res.message
+          });
+        }
+      })
+    },
     submit(){
       let params ={
-        jobId:this.jobId,
+        jobId:this.$route.params.id,
         jobName:this.jobname,
         salaryRange:this.money,
         location:this.address,
@@ -124,7 +147,7 @@ export default {
         compSizeKey:this.compSizeKey,
         jobExpKey:this.exp,
       }
-      API.addjob(params).then((res)=>{
+      API.updateJobProvidedInfo(params).then((res)=>{
         if (res.statusCode == 0) {
           this.$vux.toast.show({
             type:'success;',
@@ -140,7 +163,7 @@ export default {
       })
     },
     onShadowChange(ids,names) {
-      this.address =names[0]+','+names[1]+','+names[2];
+      this.address =names[0]+names[1]+names[2];
     },
   }
 }

@@ -96,12 +96,12 @@
           <group>
             <x-input title="姓  名" placeholder="请输入您的姓名" v-model="value" :is-type="codeValue"></x-input>
             <popup-radio title="意  向" :options="option" v-model="attitude"></popup-radio>
-            <x-input title="手机号" placeholder="请输入您的手机号" v-model="phone" :is-type="codeValue"></x-input>
+            <x-input title="手机号" placeholder="请输入您的手机号" v-model="mobile" :is-type="codeValue"></x-input>
             <x-input title="发送验证码"  v-model="code" :is-type="codeValue" class="weui-vcode">
-               <x-button slot="right" type="primary" mini>获取验证码</x-button>
+               <x-button slot="right" type="primary"  @click="getCode()" mini>{{ codeVal }}</x-button>
             </x-input>
           </group>
-          <x-button plain style="margin-top:20px;margin-bottom:40px">提交信息，免费获得更多加盟资讯</x-button>
+          <x-button plain style="margin-top:20px;margin-bottom:40px" @click.native="submit">提交信息，免费获得更多加盟资讯</x-button>
         </p>
  </card>
   <div class="bottomtite">浙江军梦网络科技有限公司    浙ICP备16020692号-1</div>
@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import API from '@/api/api_jmh'
+import API from '@/api/wxmp'
 import {Group,Tab, TabItem,Card,XInput,XButton,PopupRadio } from 'vux'
 export default {
   components: {
@@ -120,9 +120,12 @@ export default {
       index:1,
       title:'军才联盟成员专享权利',
       value:'',
-      phone:'',
+      mobile:'',
       code:'',
       attitude:'',
+      codeVal: '获取验证码',
+      codeFlog: false,
+      wait: 60,
       option:[
         {
         key: '1',
@@ -146,6 +149,73 @@ export default {
   methods: {
     onItemClick(obj){
       this.index = obj
+    },
+    getCode(){
+      if (this.codeFlog)return;
+      if(this.mobile !=="" && this.mobile.length===11){
+        API.code({telephone:this.mobile}).then(res => {
+          if (res.statusCode == 0) {
+              this.time();
+          }else{
+            this.$vux.toast.show({
+              type:'cancel;',
+              text:res.message
+            });
+          }
+        });
+      }else{
+        this.$vux.toast.show({
+          type:'cancel',
+          text:'手机号有误'
+        });
+      }
+    },
+    time() {
+      if (this.wait === 0) {
+        this.codeFlog = false;
+        this.codeVal = "获取验证码";
+        this.wait = 60;
+      } else {
+        this.codeFlog = true;
+        this.codeVal = "重新发送(" + this.wait + ")";
+        this.wait--;
+        setTimeout( () =>{
+          this.time()
+        }, 1000);
+      }
+    },
+    submit(){
+      if (this.value === "") {
+        this.$vux.toast.show({
+          type:'cancel',
+          text:'姓名<br>不能为空！'
+        });
+        return;
+      }
+      if (this.mobile === "") {
+        this.$vux.toast.show({
+          type:'cancel',
+          text:'手机号<br>不能为空！'
+        });
+        return;
+      }
+      if (this.code === "") {
+        this.$vux.toast.show({
+          type:'cancel',
+          text:'验证码<br>不能为空！'
+        });
+        return;
+      }
+      API.checkcode({checkCode:this.code}).then((res)=>{
+        if (res.statusCode == 0) {
+            this.bind();
+        }else{
+          this.$vux.toast.show({
+            type:'cancel;',
+            text:res.message
+          });
+        }
+      })
     }
   }
 }

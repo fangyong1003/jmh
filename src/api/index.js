@@ -4,8 +4,8 @@ import router from '@/router/index'
 
 axios.defaults.withCredentials = false;
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';//配置请求头
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';//配置请求头
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';//配置请求头
+// axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';//配置请求头
 
 //添加一个请求拦截器
 axios.interceptors.request.use(function (config) {

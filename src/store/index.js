@@ -15,7 +15,7 @@ const mutations = {
   },
   //获取公司信息
   getCpInfo(state,userInfo){
-    state.userInfo = userInfo;
+    state.company = userInfo;
   },
   //获取menu
   getMenu(state,menu){

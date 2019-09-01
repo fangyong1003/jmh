@@ -15,9 +15,26 @@ export default {
     return  API.GET('/jmh/weChat/check',params)
   },
   login(params){
-    return  API.GET('/jmh/weChat/login',params)
+    return  API.POST('/jmh/weChat/login',params)
   },
+
+
+
   addjob(params){
     return API.GET('/jmh/weChat/newJobProvidedInfo',params);
+  },
+  updateJobProvidedInfo(params){
+    return API.GET('/jmh/weChat/updateJobProvidedInfo',params);
+  },
+  getJobPvdByJobId(params){
+    return API.GET('/jmh/weChat/getJobPvdByJobId',params);
+  },
+  getAllJobPvdByCompId(params){
+    return API.GET('/jmh/weChat/getAllJobPvdByCompId',params);
+  },
+  deleteJobProvidedInfo(params){
+    return API.GET('/jmh/weChat/deleteJobProvidedInfo',params);
   }
+
+
 }
