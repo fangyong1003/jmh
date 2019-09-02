@@ -1,43 +1,42 @@
 <template>
   <div >
+      <scroller :use-pullup="showUp" :pullup-config="upobj" :bounce="isbounce" v-model="scrollerStatus" @on-pullup-loading="onScrollBottom"    style="width:100%" height="-46px" ref="scroller">
     <swiper :auto="true" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
     <group style="margin-top:-20px;" >
-        <cell is-link link="/main/mainson">
-          <img slot="icon" width="25" src="@/assets/img/people.png">
-          <span slot="value" style="font-size:12px;color:#e70001">企业合作、导师入驻、城市合伙人</span>
-          <span slot="title" style="font-size:14px;">加入军梦会</span>
+        <cell >
+          <img slot="icon" width="28" src="@/assets/img/vip.png">
+            <span slot="title" style="font-size:17px;margin-left:10px;">尊敬的会员企业，您好</span>
         </cell>
       </group>
       <div style="padding-bottom:70px;">
-
-       <flexbox :gutter="0" style="background:#fff;margin-top:10px" @click="job">
-          <flexbox-item :span="2/3">
-            <div class="flex-demo">
-             <div >
-               <div class="jobName">
-                 <span>电梯工程师傅</span>
-               </div>
-               <div class="pay">
-                 <span>6000-8000/月</span>
-               </div>
-               <div class="condition">
-                 <span>浙江磐安 | 经验不限 | 学历不限</span>
-               </div>
-               <div class="company">
-                 <span>浙江奥的斯电梯潘安分公司</span>
-               </div>
-             </div>
-          </div>
-        </flexbox-item>
-          <flexbox-item>
-            <div class="pp">
-              <img src="@/assets/img/homes.png">
+        <div v-for="(column,index) in list">
+           <div  style="background:#fff;margin-top:10px" >
+                <div class="flex-demo">
+                   <div class="jobName">
+                      <span class="col">{{column.wantedName}} </span>
+                      <span class="col" v-if="column.male=='M'">男</span>
+                      <span class="col" v-else>女</span>
+                      <span class="col">{{column.age}} </span>
+                      <span class="col">{{column.eduKey}}</span>
+                   </div>
+                   <div class="condition">
+                     <span>服役经历：</span>{{column.serveExp}}
+                   </div>
+                   <div class="condition">
+                     <span>期望岗位：</span>{{column.wantedJob1}}、{{column.wantedJob2}}
+                   </div>
+                   <div class="condition">
+                     <span>期望地点：</span>{{column.wantedPlace}}
+                   </div>
+                   <div class="parbox">
+                    <div class="par">{{column.advantage1}}</div>
+                    <div class="par">{{column.advantage2}}</div>
+                   </div>
+              </div>
             </div>
-        </flexbox-item>
-        </flexbox>
-
-
       </div>
+      </div>
+    </scroller>
      <tabbar class="bar">
         <tabbar-item selected>
             <img slot="icon" src="@/assets/img/homes.png">
@@ -56,10 +55,11 @@
 </template>
 
 <script>
-import API from '@/api/api_jmh'
-import {Swiper,Tabbar, TabbarItem,Group,Cell,Card,Flexbox, FlexboxItem  } from 'vux'
+import API from '@/api/wxmp'
+import {Scroller ,Spinner,LoadMore,Swiper,Tabbar, TabbarItem,Group,Cell,Card,Flexbox, FlexboxItem  } from 'vux'
 export default {
   components: {
+    Scroller ,Spinner,LoadMore,
     Swiper,
     Tabbar,
    TabbarItem,
@@ -70,7 +70,26 @@ export default {
   },
   data () {
     return {
+      scrollerStatus: {
+           pullupStatus: 'default'
+       },
+       upobj: {
+           content: '请上拉刷新数据',
+           pullUpHeight: 60,
+           height: 40,
+           autoRefresh: false,
+           downContent: '请上拉刷新数据',
+           upContent: '请上拉刷新数据',
+           loadingContent: '加载中...',
+           clsPrefix: 'xs-plugin-pullup-'
+       },
+       isbounce: false,
+       showUp: true,
+       onFetching: false,
       index:0,
+      pageSize:10,
+      currentPage:1,
+      list:[],
       demo:[{
         url: 'javascript:',
         img: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg',
@@ -79,21 +98,64 @@ export default {
         url: 'javascript:',
         img: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vw1k2wj20p00goq7n.jpg',
         title: '送你一辆车'
-      }]
+      }],
     }
+  },
+  created(){
+    this.getList();
   },
   methods: {
     onIndexChange(index){
        this.index = index
     },
-    show3(){
+    onScrollBottom () {
+          setTimeout(() => {
+              // 上拉获取数据拼接
+              this.pullUpGetData()
+          }, 2000)
+      },
+    getList(){
+      API.getAllJobWantedInfo({currentPage:this.currentPage,pageSize:this.pageSize}).then((res)=>{
+        if (res.statusCode == 0) {
+          this.list = res.results;
+        }else{
+          this.$vux.toast.show({
+            type:'cancel;',
+            text:res.message
+          });
+        }
+      })
+    },
 
-    },
-    tojoin(){
-        this.$router.push('')
-    },
-    job(){
-        this.$router.push('/jobdetail')
+    pullUpGetData (){
+        let page = this.currentPage + 1;
+        let params ={
+          currentPage:page,
+          pageSize:this.pageSize
+        }
+        API.getAllJobWantedInfo(params).then((res)=>{
+          if (res.statusCode == 0) {
+            this.list = this.list.concat(res.results);
+            if (res.results.length < 10) {
+           // 没有就显示底线以及禁用上拉
+               this.onFetching = true
+               this.scrollerStatus.pullupStatus = 'disabled'
+           } else {
+               // 还有数据就开启上拉，并重置
+               this.scrollerStatus.pullupStatus = 'default'
+               this.$nextTick(() => {
+                   this.$refs.scroller.reset()
+               })
+           }
+
+          }else{
+            this.$vux.toast.show({
+              type:'cancel;',
+              text:res.message
+            });
+          }
+
+        })
     }
   }
 }
@@ -115,11 +177,24 @@ export default {
 .jobName{
   font-size:16px;
 color:#333333;
-font-weight:bold;
+line-height: 30px;
+}
+.col{
+  margin-right: 10px;
 }
 .pay{
   font-size:14px;
 color:#f2191a;
+}
+.parbox{
+  height: 25px;
+}
+.par{
+  float: left;
+  padding: 0 10px;
+  font-size: 12px;color:#1e6eb7;
+  border: 1px solid #1e6eb7;
+  margin-right:10px;
 }
 .condition,.company{
   font-size:12px;

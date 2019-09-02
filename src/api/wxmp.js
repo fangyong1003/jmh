@@ -34,7 +34,15 @@ export default {
   },
   deleteJobProvidedInfo(params){
     return API.GET('/jmh/weChat/deleteJobProvidedInfo',params);
-  }
+  },
 
+//获取求职信息
+  getAllJobWantedInfo(params){
+    return API.GET('jmh/weChat/getAllJobWantedInfo',params);
+  },
+  //获取职位列表
+  getAllJobPvdInfo(params){
+    return API.GET('/jmh/weChat/getAllJobPvdInfo',params);
+  },
 
 }

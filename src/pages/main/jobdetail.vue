@@ -1,31 +1,35 @@
 <template>
   <div >
-    <card :header="电梯工程师">
-         <div slot="content" class="card-demo-flex card-demo-content01">
-           <div class="vux-1px-r">
-             <span>1130</span>
-             <br/>
+    <card >
+         <div slot="content" class="card-demo-flex card-demo-content01 bo">
+           <div class="name">
+             <span>{{column.jobName}}</span>
            </div>
-           <div class="vux-1px-r">
-             <span>15</span>
-             <br/>
+           <div class="pay">
+             <span>{{column.salaryRange}}元/月</span>
            </div>
-           <div class="vux-1px-r">
-             <span>0</span>
-             <br/>
+           <div class="requ">
+             <span>{{column.location}} | {{column.jobExpValue}} | {{column.eduValue}}</span>
            </div>
-           <div>
-             <span>88</span>
-             <br/>
-           </div>
+           <div class="company">{{column.companyName}}</div>
+           <div class="some">{{column.compSizeValue}} | {{column.industryValue}}</div>
          </div>
        </card>
+       <card >
+           <div slot="header" class="card-title">
+             <div class="bars"></div>
+             职位描述
+           </div>
+           <p slot="content" class="card-padding">
+             {{column.jobDesc}}
+           </p>
+      </card>
   <div class="bottomtite">浙江军梦网络科技有限公司    浙ICP备16020692号-1</div>
   </div>
 </template>
 
 <script>
-import API from '@/api/api_jmh'
+import API from '@/api/wxmp'
 import {Group,Tab, TabItem,Card,XInput,XButton,PopupRadio } from 'vux'
 export default {
   components: {
@@ -33,36 +37,25 @@ export default {
   },
   data () {
     return {
-      index:1,
-      title:'军才联盟成员专享权利',
-      value:'',
-      phone:'',
-      code:'',
-      attitude:'',
-      option:[
-        {
-        key: '1',
-        value: '企业联盟'
-      }, {
-        key: '2',
-        value: '导师加盟'
-      }, {
-        key: '3',
-        value: '城市合伙人加盟'
-      }
-      ],
-      codeValue: function(value){
-                return {
-                    valid: value.length !='',
-                    msg: "必填项!"
-                }
-      }
+      column:{},
     }
   },
+  created(){
+    this.getDetail();
+  },
   methods: {
-    onItemClick(obj){
-      this.index = obj
-    }
+    getDetail(){
+      API.getJobPvdByJobId({jobId:this.$route.params.id}).then((res)=>{
+        if(res.statusCode='0'){
+          this.column = res.jobProvidedInfo;
+        }else{
+          this.$vux.toast.show({
+            type:'cancel;',
+            text:res.message
+          });
+        }
+      })
+    },
   }
 }
 </script>
@@ -108,5 +101,32 @@ line-height: 30px;
   padding: 0 0.6rem;
   font-size: 12px;
   margin-top: 10px;
+}
+.name{
+  font-size:18px;
+color:#333333;
+}
+.bo{
+  padding: 15px 10px;
+  line-height: 30px;
+}
+.pay{
+  font-size:16px;
+color:#f2191a;
+}
+.requ{
+  font-size:14px;
+color:#1e6eb7;
+}
+.company{
+  border-top: 1px solid #e5e5e5;
+  font-size:14px;
+color:#333333;
+margin-top: 10px;
+padding-top: 10px;
+}
+.some{
+  font-size:12px;
+color:#666666;
 }
 </style>

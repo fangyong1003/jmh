@@ -55,7 +55,7 @@ let router = new Router({
       }
     },
     {
-      path: '/main/jobdetail',
+      path: '/main/jobdetail/:id',
       name: 'jobdetail',
       component:Jobdetail,
       meta: {
