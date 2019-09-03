@@ -1,6 +1,8 @@
 <template>
   <div class="box">
   <view-box class="signIn" bodyPaddingTop="0" bodyPaddingBottom="0">
+    <img src="@/assets/img/company.png" class="pg">
+    <div class="tit">会员企业登录，享受会员特权</div>
     <group class="pp" label-width="4.5em" label-margin-right="2em" label-align="right">
       <x-input v-model="userName" type="tel" title="账号:"
                required placeholder="请输入账号"></x-input>
@@ -9,7 +11,7 @@
     </group>
 
     <box gap="10px 10px">
-      <x-button plain style="background: #fff;border-color:#ccc;color:#1e6eb7" @click.native="submit">登录</x-button>
+      <x-button plain style="background: #fff;border-color:#ccc;color:#1e6eb7;font-size:18px;margin-top:40px;font-weight:bold" @click.native="submit">登录</x-button>
     </box>
   </view-box>
 </div>
@@ -93,4 +95,17 @@
       z-index: 10;
     }
   }
+  .tit{
+		font-size:18px;
+color:#ffffff;
+text-align: center;
+margin-top:30px;
+margin-bottom: 40px;
+font-weight:bold
+	}
+	.pg{
+		margin-top: 40px;
+		width: 90%;
+		margin-left: 5%
+	}
 </style>

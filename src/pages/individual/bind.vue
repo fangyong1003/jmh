@@ -1,6 +1,8 @@
 <template>
 	<div class="box">
   <view-box class="signIn" bodyPaddingTop="0" bodyPaddingBottom="0">
+		<img src="@/assets/img/bind.png" class="pg">
+		<div class="tit">绑定手机号，免费获取高薪机会</div>
     <group class="pp" label-width="4.5em" label-margin-right="2em" label-align="right">
       <x-input v-model="mobile" type="tel" title="手机号:" is-type="china-mobile"
                required placeholder="请输入手机号..."></x-input>
@@ -9,7 +11,7 @@
       <span class="ui-code" @click="getCode()">{{ codeVal }}</span>
     </group>
     <box gap="10px 10px">
-      <x-button plain style="background: #fff;border-color:#ccc;color:#1e6eb7" @click.native="register">绑定</x-button>
+      <x-button plain style="background: #fff;border-color:#ccc;color:#1e6eb7;font-size:18px;margin-top:30px;font-weight:bold" @click.native="register">确定绑定</x-button>
     </box>
 
   </view-box>
@@ -144,4 +146,17 @@
       z-index: 10;
     }
   }
+	.tit{
+		font-size:18px;
+color:#ffffff;
+text-align: center;
+margin-top:30px;
+margin-bottom: 40px;
+font-weight:bold
+	}
+	.pg{
+		margin-top: 40px;
+		width: 80%;
+		margin-left: 10%
+	}
 </style>

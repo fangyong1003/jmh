@@ -147,7 +147,7 @@ let router = new Router({
       name: 'res',
       component: Reg,
       meta: {
-        title: '绑定号码'
+        title: '会员企业登录'
       }
     },
     ]
@@ -158,7 +158,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title;
     if (to.meta.require) {
-      // empower();
+      empower();
       next()
     } else {
       next();
