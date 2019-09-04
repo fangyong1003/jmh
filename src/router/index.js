@@ -1,5 +1,7 @@
 import Vue from 'vue'
+import store from "../store/index"
 import Router from 'vue-router'
+
 import Main from '@/pages/individual/main'
 import Mainson from '@/pages/main/mainson'
 import Jobdetail from '@/pages/main/jobdetail'
@@ -28,7 +30,7 @@ let router = new Router({
       name: 'bind',
       component: Bind,
       meta: {
-        title: '登录',
+        title: '绑定手机号',
       }
     },
     {
@@ -99,7 +101,7 @@ let router = new Router({
       name: 'joblist',
       component: Joblist,
       meta: {
-        title: '已发布的招聘'
+        title: '已发布的招聘',require:true
       }
     },
     {
@@ -107,7 +109,7 @@ let router = new Router({
       name: 'addjob',
       component: Addjob,
       meta: {
-        title: '发布招聘信息'
+        title: '发布招聘信息',require:true
       }
     },
     {
@@ -115,7 +117,7 @@ let router = new Router({
       name: 'editjob',
       component: Editjob,
       meta: {
-        title: '编辑招聘信息'
+        title: '编辑招聘信息',require:true
       }
     },
     {
@@ -131,7 +133,7 @@ let router = new Router({
       name: 'mine',
       component: Cmine,
       meta: {
-        title: '军梦汇'
+        title: '军梦汇',require:true
       }
     },
     {
@@ -158,13 +160,25 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title;
     if (to.meta.require) {
-      empower();
-      next()
+      if(to.path.indexOf("company") >= 0){
+          if(store.state.company.companyName){
+            next();
+          }else{
+            router.push('/company/reg');
+          }
+      }else{
+        empower();
+        if(store.state.phone>0){
+          next();
+        }else{
+          router.push('/individual/bind');
+        }
+        next()
+      }
     } else {
       next();
     }
   }
-
 });
 
 export default router

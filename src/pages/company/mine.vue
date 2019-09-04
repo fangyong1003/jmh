@@ -1,9 +1,9 @@
 <template>
   <div >
         <div class="vantabox">
-          <img :src="headerUrl" class="vanta">
+          <img :src="$store.state.company.officialImage" class="vanta">
           <div class="name">
-            <div>{{name}}</div>
+            <div>{{$store.state.company.companyName}}</div>
             <img style="margin-top:10px" src="@/assets/img/tag.png">
           </div>
         </div>
@@ -59,8 +59,7 @@ export default {
   },
   data () {
     return {
-      headerUrl:this.$store.state.company.officialImage,
-      name:this.$store.state.company.companyName,
+    
     }
   },
   methods: {

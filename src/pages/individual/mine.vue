@@ -1,15 +1,20 @@
 <template>
   <div >
         <div class="vantabox">
-          <img :src="headerUrl" class="vanta">
-          <span class="name">{{name}}</span>
+          <img :src="$store.state.userInfo.headimgurl" class="vanta">
+          <span class="name">{{$store.state.userInfo.nickname}}</span>
         </div>
         <group>
-          <cell  is-link link="/individual/bind">
+          <cell v-if="phone"  is-link link="/individual/bind">
             <p slot = "title">手机号</p>
            <img slot="icon" width="20" style="display:block;margin-right:5px;" src="@/assets/img/phone.png">
            <p slot = "value" style="font-size:12px;color:#e70001;">绑定手机号，免费获得高薪机会</p>
          </cell>
+         <cell v-else  >
+           <p slot = "title">手机号</p>
+          <img slot="icon" width="20" style="display:block;margin-right:5px;" src="@/assets/img/phone.png">
+          <p slot = "value" style="font-size:12px;">{{phone}}</p>
+        </cell>
         </group>
         <group>
           <cell  is-link @click.native="tel">
@@ -40,9 +45,8 @@
 </template>
 
 <script>
-import API from '@/api/api_jmh'
-import {Swiper,Tabbar, TabbarItem,Group,Cell  } from 'vux'
-import {setKey,getKey} from '@/utils/token';
+import API from '@/api/wxmp'
+import {Swiper,Tabbar, TabbarItem,Group,Cell} from 'vux'
 export default {
   components: {
     Swiper,
@@ -53,15 +57,30 @@ export default {
   },
   data () {
     return {
-      headerUrl:'',
-      name:'',
+      phone:'',
     }
   },
   created:function(){
-    this.headerUrl = getKey('_wechat_headimgurl')||this.$store.state.userInfo.headimgurl;
-    this.name = getKey('_wechat_nickname')||this.$store.state.userInfo.nickname;
+    this.getPhone();
   },
   methods: {
+    getPhone(){
+      API.getPhone({openId:this.$store.state.userInfo.openid}).then((res)=>{
+        if (res.statusCode == 0) {
+            if(res.message){
+              this.phone = res.message;
+              this.$store.dispatch('phoneAction',res.message);
+            }else{
+              this.$store.dispatch('phoneAction',0);
+            }
+        }else{
+          this.$vux.toast.show({
+            type:'cancel;',
+            text:res.message
+          });
+        }
+      })
+    },
     tel(){
        window.location.href="tell://4008277616"
     }

@@ -69,6 +69,7 @@
 				API.bindPhone({openId:this.$store.state.userInfo.openId,telephone:this.monile}).then((res)=>{
 					if (res.statusCode == 0) {
 						this.$router.push("/");
+						this.$store.dispatch('phoneAction',1);
 					}else{
 						this.$vux.toast.show({
 							type:'cancel;',

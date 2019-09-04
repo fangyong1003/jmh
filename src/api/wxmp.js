@@ -44,5 +44,8 @@ export default {
   getAllJobPvdInfo(params){
     return API.GET('/jmh/weChat/getAllJobPvdInfo',params);
   },
+  getPhone(params){
+    return API.GET('/jmh/weChat/getPhone',params);
+  },
 
 }

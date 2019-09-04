@@ -6,6 +6,7 @@ const state = {
   aa:false,
   userInfo:{},
   company:{},
+  phone:'',
 }
 
 const mutations = {
@@ -18,8 +19,8 @@ const mutations = {
     state.company = userInfo;
   },
   //获取menu
-  getMenu(state,menu){
-    state.menu = menu;
+  getPhone(state,phone){
+    state.phone = phone;
   },
 }
 
@@ -30,8 +31,8 @@ const actions = {
   cpInfoAction(context,company){
       context.commit('getCpInfo',company);
   },
-  menuAction(context,menu){
-      context.commit('getMenu',menu);
+  phoneAction(context,phone){
+      context.commit('getPhone',phone);
   }
 }
 export default new Vuex.Store({

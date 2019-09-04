@@ -12,6 +12,8 @@ function GetQueryString(name)
 //微信用户授权
 let empower = () =>{
   var code=GetQueryString("code");
+  let url = 'http%3a%2f%2fwww.junmenghui.com%2f';
+  console.log(url);
   if(code !=null && code.toString().length>1 || getKey('_wechat_id')){
     // if(getKey('_wechat_id')){return}
     Wxmp.oauth({code: code}).then((res)=>{
@@ -26,7 +28,7 @@ let empower = () =>{
       console.log(e.message);
     });
   }else{
-    window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa18ab49a349b53d0&redirect_uri=" +location.href+ "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+    window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa18ab49a349b53d0&redirect_uri=" +url+ "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
   }
 }
 
