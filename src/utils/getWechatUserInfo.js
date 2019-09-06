@@ -19,6 +19,7 @@ let empower = () =>{
       console.log(res);
       if(res.statusCode ==0){
         store.dispatch('userInfoAction',res.weChatUserInfo);
+        window.localStorage.setItem("userInfo",JSON.stringify(res.weChatUserInfo));
         getPhone(res.weChatUserInfo.openid);
         setKey('_wechat_id',res.weChatUserInfo.openid);
         setKey('_wechat_headimgurl',res.weChatUserInfo.headimgurl);
@@ -39,7 +40,7 @@ function getPhone(obj){
           let re=/(\d{3})\d{4}(\d{4})/;
           let phone = res.message;
           phone=phone.replace(re,'$1****$2');
-          console.log(store.state);
+            window.localStorage.setItem("phone",phone));
           store.dispatch('phoneAction',phone);
         }else{
           store.dispatch('phoneAction',0);

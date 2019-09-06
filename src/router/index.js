@@ -19,6 +19,7 @@ import Clearn from '@/pages/company/learn'
 import Joblist from '@/pages/company/joblist'
 import Addjob from '@/pages/company/addjob'
 import Editjob from '@/pages/company/editjob'
+import Learnsons from '@/pages/company/learnson'
 Vue.use(Router)
 
 let router = new Router({
@@ -75,6 +76,14 @@ let router = new Router({
       path: '/learnson',
       name: 'learnson',
       component: Learnson,
+      meta: {
+        title: '课程详情',require:true
+      }
+    },
+    {
+      path: '/company/learnson',
+      name: 'learnson',
+      component: Learnsons,
       meta: {
         title: '课程详情',require:true
       }
@@ -159,6 +168,8 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title;
     if (to.meta.require) {
+        console.log(to.path);
+      console.log(to.path.indexOf("company"));
       if(to.path.indexOf("company") >= 0){
           if(store.state.company.companyName){
             next();
@@ -166,7 +177,6 @@ router.beforeEach((to, from, next) => {
             router.push('/company/reg');
           }
       }else{
-        console.log(store);
         if(store.state.phone!=0){
           next();
         }else{

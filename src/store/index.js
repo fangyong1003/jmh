@@ -4,9 +4,9 @@ Vue.use(Vuex)
 
 const state = {
   aa:false,
-  userInfo:{},
-  company:{},
-  phone:'',
+  userInfo:window.localStorage.userInfo?JSON.parse(window.localStorage.userInfo):{},
+  company:window.localStorage.company?JSON.parse(window.localStorage.company):{},
+  phone:window.localStorage.phone?JSON.parse(window.localStorage.phone):'',
 }
 
 const mutations = {

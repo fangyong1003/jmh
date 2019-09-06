@@ -4,9 +4,9 @@
     <img src="@/assets/img/company.png" class="pg">
     <div class="tit">会员企业登录，享受会员特权</div>
     <group class="pp" label-width="4.5em" label-margin-right="2em" label-align="right">
-      <x-input v-model="userName" type="tel" title="账号:"
+      <x-input v-model="userName"  title="账号:"
                required placeholder="请输入账号"></x-input>
-      <x-input v-model="password" type="tel" title="密码:"
+      <x-input v-model="password" title="密码:"
                required placeholder="请输入密码"></x-input>
     </group>
 
@@ -52,6 +52,7 @@
         API.login(params).then((res)=>{
           if (res.statusCode == 0) {
             this.$store.dispatch('cpInfoAction',res.compRole);
+            window.localStorage.setItem("company",JSON.stringify(res.compRole));
 						this.$router.push("/company/main");
 					}else{
 						this.$vux.toast.show({

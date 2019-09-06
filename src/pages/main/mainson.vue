@@ -222,7 +222,7 @@ export default {
         if (res.statusCode == 0) {
           this.$vux.toast.show({
             type:'success',
-            text:'提交成功！'
+            text:res.message
           });
           this.value='';
           this.mobile='';
