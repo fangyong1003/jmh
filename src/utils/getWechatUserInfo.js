@@ -13,13 +13,13 @@ function GetQueryString(name)
 let empower = () =>{
   var code=GetQueryString("code");
   let url = 'http%3a%2f%2fwww.junmenghui.com%2f';
-  console.log(url);
-  if(code !=null && code.toString().length>1 || getKey('_wechat_id')){
+  if(code !=null && code.toString().length>1){
     // if(getKey('_wechat_id')){return}
     Wxmp.oauth({code: code}).then((res)=>{
       console.log(res);
       if(res.statusCode ==0){
         store.dispatch('userInfoAction',res.weChatUserInfo);
+        getPhone(res.weChatUserInfo.openid);
         setKey('_wechat_id',res.weChatUserInfo.openid);
         setKey('_wechat_headimgurl',res.weChatUserInfo.headimgurl);
         setKey('_wechat_nickname',res.weChatUserInfo.nickname);
@@ -32,6 +32,21 @@ let empower = () =>{
   }
 }
 
+function getPhone(obj){
+  Wxmp.getPhone({openId:obj}).then((res)=>{
+    if (res.statusCode == 0) {
+        if(res.message){
+          let re=/(\d{3})\d{4}(\d{4})/;
+          let phone = res.message;
+          phone=phone.replace(re,'$1****$2');
+          console.log(store.state);
+          store.dispatch('phoneAction',phone);
+        }else{
+          store.dispatch('phoneAction',0);
+        }
+    }
+  })
+}
 export { empower }
 
 

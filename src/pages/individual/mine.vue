@@ -5,16 +5,16 @@
           <span class="name">{{$store.state.userInfo.nickname}}</span>
         </div>
         <group>
-          <cell v-if="phone"  is-link link="/individual/bind">
+          <cell  v-if="$store.state.phone!=0" >
+            <p slot = "title">手机号</p>
+           <img slot="icon" width="20" style="display:block;margin-right:5px;" src="@/assets/img/phone.png">
+           <p slot = "value" style="font-size:14px;margin-right:12px;">{{$store.state.phone}}</p>
+         </cell>
+          <cell  v-else is-link link="/individual/bind">
             <p slot = "title">手机号</p>
            <img slot="icon" width="20" style="display:block;margin-right:5px;" src="@/assets/img/phone.png">
            <p slot = "value" style="font-size:12px;color:#e70001;">绑定手机号，免费获得高薪机会</p>
          </cell>
-         <cell v-else  >
-           <p slot = "title">手机号</p>
-          <img slot="icon" width="20" style="display:block;margin-right:5px;" src="@/assets/img/phone.png">
-          <p slot = "value" style="font-size:12px;">{{phone}}</p>
-        </cell>
         </group>
         <group>
           <cell  is-link @click.native="tel">
@@ -47,6 +47,7 @@
 <script>
 import API from '@/api/wxmp'
 import {Swiper,Tabbar, TabbarItem,Group,Cell} from 'vux'
+import { empower } from '@/utils/getWechatUserInfo.js'
 export default {
   components: {
     Swiper,
@@ -61,26 +62,9 @@ export default {
     }
   },
   created:function(){
-    this.getPhone();
+    empower();
   },
   methods: {
-    getPhone(){
-      API.getPhone({openId:this.$store.state.userInfo.openid}).then((res)=>{
-        if (res.statusCode == 0) {
-            if(res.message){
-              this.phone = res.message;
-              this.$store.dispatch('phoneAction',res.message);
-            }else{
-              this.$store.dispatch('phoneAction',0);
-            }
-        }else{
-          this.$vux.toast.show({
-            type:'cancel;',
-            text:res.message
-          });
-        }
-      })
-    },
     tel(){
        window.location.href="tell://4008277616"
     }

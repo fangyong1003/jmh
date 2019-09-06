@@ -19,7 +19,6 @@ import Clearn from '@/pages/company/learn'
 import Joblist from '@/pages/company/joblist'
 import Addjob from '@/pages/company/addjob'
 import Editjob from '@/pages/company/editjob'
-import { empower } from '@/utils/getWechatUserInfo.js'
 Vue.use(Router)
 
 let router = new Router({
@@ -85,7 +84,7 @@ let router = new Router({
       name: 'mine',
       component: Mine,
       meta: {
-        title: '军梦汇',require:true
+        title: '军梦汇'
       }
     },
     {
@@ -167,7 +166,6 @@ router.beforeEach((to, from, next) => {
             router.push('/company/reg');
           }
       }else{
-        empower();
         if(store.state.phone>0){
           next();
         }else{
