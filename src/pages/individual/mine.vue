@@ -47,7 +47,6 @@
 <script>
 import API from '@/api/wxmp'
 import {Swiper,Tabbar, TabbarItem,Group,Cell} from 'vux'
-import { empower } from '@/utils/getWechatUserInfo.js'
 export default {
   components: {
     Swiper,
@@ -60,9 +59,6 @@ export default {
     return {
       phone:'',
     }
-  },
-  created:function(){
-    empower();
   },
   methods: {
     tel(){

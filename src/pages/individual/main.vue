@@ -58,6 +58,7 @@
 
 <script>
 import API from '@/api/wxmp'
+import { empower } from '@/utils/getWechatUserInfo.js'
 import {Scroller ,Spinner,LoadMore,Swiper,Tabbar, TabbarItem,Group,Cell,Card,Flexbox, FlexboxItem  } from 'vux'
 export default {
   components: {
@@ -94,16 +95,17 @@ export default {
       list:[],
       demo:[{
         url: 'javascript:',
-        img: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg',
+        img: '@/assets/img/2.jpg',
         title: '送你一朵fua'
       }, {
         url: 'javascript:',
-        img: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vw1k2wj20p00goq7n.jpg',
+        img: '@/assets/img/1.jpg',
         title: '送你一辆车'
       }]
     }
   },
   created(){
+      empower();
     this.getList();
   },
   methods: {

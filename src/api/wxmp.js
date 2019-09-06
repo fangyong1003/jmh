@@ -47,5 +47,8 @@ export default {
   getPhone(params){
     return API.GET('/jmh/weChat/getPhone',params);
   },
+  newVisitor(params){
+    return API.GET('jmh/website/newVisitor',params);
+  },
 
 }

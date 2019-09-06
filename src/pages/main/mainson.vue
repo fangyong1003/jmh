@@ -98,7 +98,7 @@
             <popup-radio title="意  向" :options="option" v-model="attitude"></popup-radio>
             <x-input title="手机号" placeholder="请输入您的手机号" v-model="mobile" :is-type="codeValue"></x-input>
             <x-input title="发送验证码"  v-model="code" :is-type="codeValue" class="weui-vcode">
-               <x-button slot="right" type="primary"  @click="getCode()" mini>{{ codeVal }}</x-button>
+               <x-button slot="right" type="primary"  @click.native="getCode()" mini>{{ codeVal }}</x-button>
             </x-input>
           </group>
           <x-button plain style="margin-top:20px;margin-bottom:40px" @click.native="submit">提交信息，免费获得更多加盟资讯</x-button>
@@ -208,7 +208,29 @@ export default {
       }
       API.checkcode({checkCode:this.code}).then((res)=>{
         if (res.statusCode == 0) {
-            this.bind();
+            this.sub();
+        }else{
+          this.$vux.toast.show({
+            type:'cancel;',
+            text:res.message
+          });
+        }
+      })
+    },
+    sub(){
+      API.newVisitor({visitorName:this.value,phone:this.mobile,visitorStatus:'',visitorType:this.attitude}).then((res)=>{
+        if (res.statusCode == 0) {
+          this.$vux.toast.show({
+            type:'success',
+            text:'提交成功！'
+          });
+          this.value='';
+          this.mobile='';
+          this.code='';
+          this.attitude='';
+          this.codeFlog = false;
+          this.codeVal = "获取验证码";
+          this.wait = 60;
         }else{
           this.$vux.toast.show({
             type:'cancel;',

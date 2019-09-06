@@ -166,7 +166,8 @@ router.beforeEach((to, from, next) => {
             router.push('/company/reg');
           }
       }else{
-        if(store.state.phone>0){
+        console.log(store);
+        if(store.state.phone!=0){
           next();
         }else{
           router.push('/individual/bind');

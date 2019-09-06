@@ -4,7 +4,7 @@
     <div style="padding-bottom:70px;">
       <div class="column" @click="go">
           <div class="imgbox" >
-            <img src="https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg" >
+            <img src="@/assets/img/1.jpg" >
           </div>
           <div class="content">
             <span class="ptitle">军人专属 免费学习</span>
@@ -16,7 +16,7 @@
 
       <div class="column">
           <div class="imgbox" >
-            <img src="https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg" >
+            <img src="@/assets/img/1.jpg" >
           </div>
           <div class="content">
             <span class="ptitle">军人专属 免费学习</span>
@@ -27,7 +27,7 @@
       </div>
       <div class="column">
           <div class="imgbox" >
-            <img src="https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg" >
+            <img src="@/assets/img/1.jpg" >
           </div>
           <div class="content">
             <span class="ptitle">军人专属 免费学习</span>
@@ -38,7 +38,7 @@
       </div>
       <div class="column">
           <div class="imgbox" >
-            <img src="https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg" >
+            <img src="@/assets/img/1.jpg" >
           </div>
           <div class="content">
             <span class="ptitle">军人专属 免费学习</span>
