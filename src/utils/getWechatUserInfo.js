@@ -40,7 +40,7 @@ function getPhone(obj){
           let re=/(\d{3})\d{4}(\d{4})/;
           let phone = res.message;
           phone=phone.replace(re,'$1****$2');
-            window.localStorage.setItem("phone",phone));
+            window.localStorage.setItem("phone",phone);
           store.dispatch('phoneAction',phone);
         }else{
           store.dispatch('phoneAction',0);

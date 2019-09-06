@@ -1,5 +1,5 @@
 <template>
-  <div style="height:100%" >
+  <div >
       <scroller :use-pullup="showUp" :pullup-config="upobj" :bounce="isbounce" v-model="scrollerStatus" @on-pullup-loading="onScrollBottom"    style="width:100%" height="-46px" ref="scroller">
       <div v-if="list.length>0">
           <div class="box" v-for="(column,index) in list">
