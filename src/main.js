@@ -12,8 +12,20 @@ Vue.use(ToastPlugin)
 import './assets/style.css';
 Vue.use(WechatPlugin)
 Vue.use(AjaxPlugin)
-FastClick.attach(document.body)
+// FastClick.attach(document.body)
 Vue.config.productionTip = false
+Vue.filter('formatDateTime', function (value) {
+  if(value){
+      let d = new Date(parseInt(value)),
+          year = d.getFullYear(),
+          month = (d.getMonth()+1) <10 ? '0' + (d.getMonth()+1) : '' + (d.getMonth()+1),
+          day = d.getDate() <10 ? '0' + d.getDate() : '' + d.getDate(),
+          hour = d.getHours() <10 ? '0' + d.getHours() : '' + d.getHours(),
+          minutes = d.getMinutes() <10 ? '0' + d.getMinutes() : '' + d.getMinutes(),
+          seconds = d.getSeconds() <10 ? '0' + d.getSeconds() : '' + d.getSeconds();
+      return  year+ '-' + month + '-' + day + ' ' + hour + ':' + minutes + ':' + seconds;
+  }
+});
 // empower();
 /* eslint-disable no-new */
 new Vue({

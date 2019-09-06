@@ -87,7 +87,7 @@ export default {
        showUp: true,
        onFetching: false,
       index:0,
-      pageSize:10,
+      pageSize:20,
       currentPage:1,
       list:[],
       demo:[{

@@ -1,10 +1,10 @@
 <template>
   <div >
-      <scroller :use-pullup="showUp" :pullup-config="upobj" :bounce="isbounce" v-model="scrollerStatus" @on-pullup-loading="onScrollBottom"    style="width:100%" height="-46px" ref="scroller">
+      <!-- <scroller :use-pullup="showUp" :pullup-config="upobj" :bounce="isbounce" v-model="scrollerStatus" @on-pullup-loading="onScrollBottom"    style="width:100%" height="-46px" ref="scroller"> -->
       <div v-if="list.length>0">
           <div class="box" v-for="(column,index) in list">
             <div class="cline">
-              <span class="ctitle">发布时间：</span>{{column.updateTime}}
+              <span class="ctitle">发布时间：</span>{{column.updateTime|formatDateTime}}
               <div class="del" @click="del(column.jobId)"><img class="icon" src="@/assets/img/del.png"></div>
               <div class="del" @click="edit(column.jobId)"><img  class="icon" src="@/assets/img/edit.png"></div>
             </div>
@@ -12,7 +12,7 @@
               <span class="ctitle">岗位名称：</span>{{column.jobName}}
             </div>
             <div class="cline">
-              <span class="ctitle">岗位薪资：</span>{{column.salaryRange}}
+              <span class="ctitle">岗位薪资：</span>{{column.salaryRange}}元/月
             </div>
             <div class="cline">
               <span class="ctitle">岗位要求：</span>{{column.jobExpValue}}    |    {{column.eduValue}}
@@ -22,19 +22,18 @@
             </div>
             <div class="cline">
               <span class="ctitle">岗位描述：</span>
-              <a v-show="!column.show" class="detailbtn" @click.native="show(index)">点击查看详情</a>
-              <a v-show="column.show" class="detailbtn" @click.native="show(index)">点击收起详情</a>
-              <div class="detail" v-show="column.show">{{column.jobDesc}}</div>
+              <span v-if="!column.show" class="detailbtn" @click="shows(index)">点击查看详情</span>
+              <span v-if="column.show" class="detailbtn" @click="shows(index)">点击收起详情</span>
+              <div class="detail" v-if="column.show">{{column.jobDesc}}</div>
             </div>
           </div>
-
     </div>
     <div class="kong" v-else>
       <img src="@/assets/img/kong.png">
       <div class="kongword">您尚未发布任何招聘信息哦</div>
       <a class="fofa" @click="gofa">去发布招聘</a>
     </div>
-      </scroller>
+      <!-- </scroller> -->
   </div>
 </template>
 
@@ -64,7 +63,7 @@ export default {
        showUp: true,
        onFetching: false,
       currentPage:1,
-      pageSize:10,
+      pageSize:100,
       list:[]
     }
   },
@@ -82,7 +81,7 @@ export default {
         if (res.statusCode == 0) {
           this.list = res.results;
           for(let i in this.list){
-            this.list[i].show = false;
+            this.$set(this.list[i],'show',false)
           }
         }else{
           this.$vux.toast.show({
@@ -99,7 +98,7 @@ export default {
               this.pullUpGetData()
           }, 2000)
       },
-    show(index){
+    shows(index){
       this.list[index].show = !this.list[index].show
     },
     del(id){
