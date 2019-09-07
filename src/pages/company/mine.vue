@@ -1,7 +1,8 @@
 <template>
   <div >
         <div class="vantabox">
-          <img :src="$store.state.company.officialImage" class="vanta">
+          <!-- <img :src="$store.state.company.officialImage" class="vanta"> -->
+          <img src="@/assets/img/vip.png" class="vanta">
           <div class="name">
             <div>{{$store.state.company.companyName}}</div>
             <img style="margin-top:10px" src="@/assets/img/tag.png">
@@ -59,7 +60,7 @@ export default {
   },
   data () {
     return {
-    
+
     }
   },
   methods: {
