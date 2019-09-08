@@ -39,7 +39,7 @@
     <!-- </scroller> -->
      <tabbar class="bar">
         <tabbar-item selected>
-            <img slot="icon" src="@/assets/img/homes.png">
+            <img slot="icon" src="@/assets/img/getps.png">
             <span slot="label">招聘</span>
         </tabbar-item>
         <tabbar-item  link="/company/learn">
@@ -93,6 +93,14 @@ export default {
       demo:[{
         url: 'http://www.junmenghui.com:8081',
         img: require('@/assets/img/banner3.png'),
+        title: ''
+      },{
+        url: 'http://www.junmenghui.com:8081/institute.html',
+        img: require('@/assets/img/banner2.png'),
+        title: ''
+      },{
+        url: 'http://www.junmenghui.com:8081/union.html',
+        img: require('@/assets/img/banner.png'),
         title: ''
       }]
     }

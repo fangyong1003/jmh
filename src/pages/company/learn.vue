@@ -10,7 +10,7 @@
             </div>
           </div>
           <div class="content">
-            <span class="ptitle">军人专属 免费学习</span>
+            <span class="ptitle">军才联盟企业会员专属</span>
             <div class="btn" >
               立即免费学习
             </div>
@@ -18,15 +18,15 @@
       </div>
     </div>
      <tabbar  class="bar">
-      <tabbar-item link="/">
-          <img slot="icon" src="@/assets/img/home.png">
-          <span slot="label">首页</span>
+      <tabbar-item link="/company/main">
+          <img slot="icon" src="@/assets/img/getp.png">
+          <span slot="label">招聘</span>
       </tabbar-item>
-      <tabbar-item selected  link="/individual/learn">
+      <tabbar-item selected  link="/company/learn">
          <img slot="icon" src="@/assets/img/learns.png">
          <span slot="label">学习</span>
        </tabbar-item>
-       <tabbar-item  link="/individual/mine">
+       <tabbar-item  link="/company/mine">
          <img slot="icon" src="@/assets/img/mine.png">
          <span slot="label">我的</span>
        </tabbar-item>
@@ -48,8 +48,16 @@ export default {
     return {
       index:0,
       demo:[{
+        url: 'http://www.junmenghui.com:8081',
+        img: require('@/assets/img/banner3.png'),
+        title: ''
+      },{
         url: 'http://www.junmenghui.com:8081/institute.html',
         img: require('@/assets/img/banner2.png'),
+        title: ''
+      },{
+        url: 'http://www.junmenghui.com:8081/union.html',
+        img: require('@/assets/img/banner.png'),
         title: ''
       }],
       list:[

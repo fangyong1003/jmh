@@ -48,8 +48,16 @@ export default {
     return {
       index:0,
       demo:[{
+        url: 'http://www.junmenghui.com:8081',
+        img: require('@/assets/img/banner3.png'),
+        title: ''
+      },{
         url: 'http://www.junmenghui.com:8081/institute.html',
         img: require('@/assets/img/banner2.png'),
+        title: ''
+      },{
+        url: 'http://www.junmenghui.com:8081/union.html',
+        img: require('@/assets/img/banner.png'),
         title: ''
       }],
       list:[

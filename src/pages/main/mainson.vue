@@ -1,5 +1,6 @@
 <template>
   <div >
+    <swiper :auto="true" :list="demo" v-model="indexs"></swiper>
     <tab>
      <tab-item selected @on-item-click="onItemClick(1)">企业加盟</tab-item>
      <tab-item @on-item-click="onItemClick(2)">导师加盟</tab-item>
@@ -110,14 +111,28 @@
 
 <script>
 import API from '@/api/wxmp'
-import {Group,Tab, TabItem,Card,XInput,XButton,PopupRadio } from 'vux'
+import {Swiper,Group,Tab, TabItem,Card,XInput,XButton,PopupRadio } from 'vux'
 export default {
   components: {
-    Group,Tab, TabItem,Card,XInput,XButton,PopupRadio
+    Group,Tab, TabItem,Card,XInput,XButton,PopupRadio,Swiper
   },
   data () {
     return {
-      index:1,
+      indexs:1,
+      index:0,
+      demo:[{
+        url: 'http://www.junmenghui.com:8081',
+        img: require('@/assets/img/banner3.png'),
+        title: ''
+      },{
+        url: 'http://www.junmenghui.com:8081/institute.html',
+        img: require('@/assets/img/banner2.png'),
+        title: ''
+      },{
+        url: 'http://www.junmenghui.com:8081/union.html',
+        img: require('@/assets/img/banner.png'),
+        title: ''
+      }],
       title:'军才联盟成员专享权利',
       value:'',
       mobile:'',

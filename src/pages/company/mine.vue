@@ -31,7 +31,7 @@
         </group>
      <tabbar  class="bar">
         <tabbar-item  link="/company/main">
-            <img slot="icon" src="@/assets/img/home.png">
+            <img slot="icon" src="@/assets/img/getp.png">
             <span slot="label">招聘</span>
         </tabbar-item>
         <tabbar-item  link="/company/learn">
