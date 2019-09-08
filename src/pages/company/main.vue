@@ -9,14 +9,14 @@
         </cell>
       </group>
       <div style="padding-bottom:70px;">
-        <div v-for="(column,index) in list">
+        <div v-for="(column,index) in list" @click="godetail(column.wantedId)">
            <div  style="background:#fff;margin-top:10px" >
                 <div class="flex-demo">
                    <div class="jobName">
                       <span class="col">{{column.wantedName}} </span>
                       <span class="col" v-if="column.male=='M'">男</span>
                       <span class="col" v-else>女</span>
-                      <span class="col">{{column.age}} </span>
+                      <span class="col">{{column.age}}岁</span>
                       <span class="col">{{column.eduValue}}</span>
                    </div>
                    <div class="condition">
@@ -152,6 +152,9 @@ export default {
           }
 
         })
+    },
+    godetail(id){
+        this.$router.push(`/company/job/${id}`);
     }
   }
 }

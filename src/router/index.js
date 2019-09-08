@@ -20,6 +20,7 @@ import Joblist from '@/pages/company/joblist'
 import Addjob from '@/pages/company/addjob'
 import Editjob from '@/pages/company/editjob'
 import Learnsons from '@/pages/company/learnson'
+import Job from '@/pages/company/detail'
 Vue.use(Router)
 
 let router = new Router({
@@ -158,6 +159,14 @@ let router = new Router({
       component: Reg,
       meta: {
         title: '会员企业登录'
+      }
+    },
+    {
+      path: '/company/job/:id',
+      name: 'job',
+      component: Job,
+      meta: {
+        title: '简历详情',require:true
       }
     },
     ]

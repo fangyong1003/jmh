@@ -48,7 +48,9 @@ export default {
     return API.GET('/jmh/weChat/getPhone',params);
   },
   newVisitor(params){
-    return API.GET('jmh/website/newVisitor',params);
+    return API.GET('/jmh/website/newVisitor',params);
   },
-
+  getJobByJobId(params){
+    return API.GET('/jmh/weChat/getJobWantedById',params);
+  }
 }
