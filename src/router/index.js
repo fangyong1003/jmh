@@ -70,7 +70,7 @@ let router = new Router({
       name: 'learn',
       component: Learn,
       meta: {
-        title: '军才学院',
+        title: '军才学院'
       }
     },
     {
