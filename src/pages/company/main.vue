@@ -1,6 +1,6 @@
 <template>
   <div >
-      <scroller :use-pullup="showUp" :pullup-config="upobj" :bounce="isbounce" v-model="scrollerStatus" @on-pullup-loading="onScrollBottom"    style="width:100%" height="-46px" ref="scroller">
+      <!-- <scroller :use-pullup="showUp" :pullup-config="upobj" :bounce="isbounce" v-model="scrollerStatus" @on-pullup-loading="onScrollBottom"    style="width:100%" height="-46px" ref="scroller"> -->
     <swiper :auto="true" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
     <group style="margin-top:-20px;" >
         <cell >
@@ -17,7 +17,7 @@
                       <span class="col" v-if="column.male=='M'">男</span>
                       <span class="col" v-else>女</span>
                       <span class="col">{{column.age}} </span>
-                      <span class="col">{{column.eduKey}}</span>
+                      <span class="col">{{column.eduValue}}</span>
                    </div>
                    <div class="condition">
                      <span>服役经历：</span>{{column.serveExp}}
@@ -29,14 +29,14 @@
                      <span>期望地点：</span>{{column.wantedPlace}}
                    </div>
                    <div class="parbox">
-                    <div class="par">{{column.advantage1}}</div>
-                    <div class="par">{{column.advantage2}}</div>
+                    <div class="par" v-if="column.advantage1">{{column.advantage1}}</div>
+                    <div class="par" v-if="column.advantage2">{{column.advantage2}}</div>
                    </div>
               </div>
             </div>
       </div>
       </div>
-    </scroller>
+    <!-- </scroller> -->
      <tabbar class="bar">
         <tabbar-item selected>
             <img slot="icon" src="@/assets/img/homes.png">
@@ -87,7 +87,7 @@ export default {
        showUp: true,
        onFetching: false,
       index:0,
-      pageSize:20,
+      pageSize:100,
       currentPage:1,
       list:[],
       demo:[{

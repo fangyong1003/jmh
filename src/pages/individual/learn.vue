@@ -6,7 +6,7 @@
           <div class="imgbox" >
             <img :src="column.url" style="width:100%;display:block">
             <div class="tagbox">
-
+              <div v-for="(col,indexs) in column.tag" class="tag">{{col}}</div>
             </div>
           </div>
           <div class="content">
@@ -48,7 +48,7 @@ export default {
     return {
       index:0,
       demo:[{
-        url: 'http://wwww.baidu.com',
+        url: 'http://www.junmenghui.com:8081/institute.html',
         img: require('@/assets/img/banner2.png'),
         title: ''
       }],
@@ -80,8 +80,8 @@ export default {
     onIndexChange(index){
        this.index = index;
     },
-    go(){
-      this.$router.push('/learnson');
+    go(id){
+      this.$router.push(`/learnson/${id}`);
     }
   }
 }
@@ -124,4 +124,12 @@ export default {
   top:10px;
   right: 10px;
 }
+.tag{
+  font-size:11px;
+  color:#006600;
+  background: #fff;
+  float: right;
+  padding: 2px 5px;
+  margin-right: 5px;
+  }
 </style>

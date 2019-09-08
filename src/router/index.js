@@ -73,7 +73,7 @@ let router = new Router({
       }
     },
     {
-      path: '/learnson',
+      path: '/learnson/:id',
       name: 'learnson',
       component: Learnson,
       meta: {
@@ -81,7 +81,7 @@ let router = new Router({
       }
     },
     {
-      path: '/company/learnson',
+      path: '/company/learnson/:id',
       name: 'learnson',
       component: Learnsons,
       meta: {

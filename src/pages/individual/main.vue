@@ -32,7 +32,7 @@
             </flexbox-item>
               <flexbox-item>
                 <div class="pp">
-                  <img src="@/assets/img/homes.png">
+                  <img src="@/assets/img/lt.png">
                 </div>
             </flexbox-item>
             </flexbox>
@@ -101,7 +101,7 @@ export default {
     }
   },
   created(){
-      // empower();
+      empower();
     this.getList();
   },
   methods: {
