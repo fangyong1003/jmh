@@ -133,7 +133,7 @@ let router = new Router({
       name: 'main',
       component: Cmain,
       meta: {
-        title: '军梦汇'
+        title: '军梦汇',require:true
       }
     },
     {
@@ -149,7 +149,7 @@ let router = new Router({
       name: 'learn',
       component: Clearn,
       meta: {
-        title: '军才学院'
+        title: '军才学院',require:true
       }
     },
     {
@@ -168,8 +168,6 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title;
     if (to.meta.require) {
-        console.log(to.path);
-      console.log(to.path.indexOf("company"));
       if(to.path.indexOf("company") >= 0){
           if(store.state.company.companyName){
             next();

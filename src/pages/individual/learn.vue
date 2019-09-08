@@ -2,9 +2,12 @@
   <div >
     <swiper :auto="true" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
     <div style="padding-bottom:70px;">
-      <div class="column" @click="go">
+      <div v-for="(column,index) in list" class="column" @click="go(column.id)">
           <div class="imgbox" >
-            <img src="@/assets/img/1.jpg" >
+            <img :src="column.url" style="width:100%;display:block">
+            <div class="tagbox">
+
+            </div>
           </div>
           <div class="content">
             <span class="ptitle">军人专属 免费学习</span>
@@ -13,45 +16,6 @@
             </div>
           </div>
       </div>
-
-      <div class="column">
-          <div class="imgbox" >
-            <img src="@/assets/img/1.jpg" >
-          </div>
-          <div class="content">
-            <span class="ptitle">军人专属 免费学习</span>
-            <div class="btn">
-              立即免费学习
-            </div>
-          </div>
-      </div>
-      <div class="column">
-          <div class="imgbox" >
-            <img src="@/assets/img/1.jpg" >
-          </div>
-          <div class="content">
-            <span class="ptitle">军人专属 免费学习</span>
-            <div class="btn">
-              立即免费学习
-            </div>
-          </div>
-      </div>
-      <div class="column">
-          <div class="imgbox" >
-            <img src="@/assets/img/1.jpg" >
-          </div>
-          <div class="content">
-            <span class="ptitle">军人专属 免费学习</span>
-            <div class="btn">
-              立即免费学习
-            </div>
-          </div>
-      </div>
-
-
-
-
-
     </div>
      <tabbar  class="bar">
       <tabbar-item link="/">
@@ -84,14 +48,32 @@ export default {
     return {
       index:0,
       demo:[{
-        url: 'javascript:',
-          img: '@/assets/img/1.jpg',
-        title: '送你一朵fua'
-      }, {
-        url: 'javascript:',
-        img: '@/assets/img/2.jpg',
-        title: '送你一辆车'
-      }]
+        url: 'http://wwww.baidu.com',
+        img: require('@/assets/img/banner2.png'),
+        title: ''
+      }],
+      list:[
+        {
+          id:'1',
+          url:require('@/assets/img/c1.png'),
+          tag:['高薪','好就业'],
+        },
+        {
+          id:'2',
+          url:require('@/assets/img/c2.png'),
+          tag:['高薪','好就业'],
+        },
+        {
+          id:'3',
+          url:require('@/assets/img/c3.png'),
+          tag:['高薪','好就业'],
+        },
+        {
+          id:'4',
+          url:require('@/assets/img/c4.png'),
+          tag:['退伍军人100%就业'],
+        },
+      ],
     }
   },
   methods: {
@@ -135,7 +117,11 @@ export default {
   color: #d81e06;
 }
 .imgbox{
-  height: 120px;
-  overflow: hidden;
+  position: relative;
+}
+.tagbox{
+  position: absolute;
+  top:10px;
+  right: 10px;
 }
 </style>

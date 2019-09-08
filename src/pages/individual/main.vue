@@ -94,18 +94,14 @@ export default {
       currentPage:1,
       list:[],
       demo:[{
-        url: 'javascript:',
-        img: '@/assets/img/2.jpg',
-        title: '送你一朵fua'
-      }, {
-        url: 'javascript:',
-        img: '@/assets/img/1.jpg',
-        title: '送你一辆车'
+        url: 'http://www.junmenghui.com:8081',
+        img: require('@/assets/img/banner3.png'),
+        title: ''
       }]
     }
   },
   created(){
-      empower();
+      // empower();
     this.getList();
   },
   methods: {
