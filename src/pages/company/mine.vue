@@ -25,7 +25,7 @@
              <p slot style="font-size:16px;color:#1e6eb7;">400-8277-616</p>
            </cell>
            <cell  is-link link="/about">
-               <p slot = "title">关于军梦会</p>
+               <p slot = "title">关于军梦汇</p>
                <img slot="icon" width="20" style="display:block;margin-right:5px;" src="@/assets/img/detail.png">
             </cell>
         </group>
