@@ -143,13 +143,13 @@ export default {
       wait: 60,
       option:[
         {
-        key: '1',
+        key: 'C',
         value: '企业联盟'
       }, {
-        key: '2',
+        key: 'B',
         value: '导师加盟'
       }, {
-        key: '3',
+        key: 'A',
         value: '城市合伙人加盟'
       }
       ],
