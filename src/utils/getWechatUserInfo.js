@@ -12,7 +12,7 @@ function GetQueryString(name)
 //微信用户授权
 let empower = () =>{
   var code=GetQueryString("code");
-  let url = 'http%3a%2f%2fwww.junmenghui.com%2f';
+  let url = 'https%3a%2f%2fwww.junmenghui.com';
   if(code!=null){
     // if(getKey('_wechat_id')){return}
     Wxmp.oauth({code: code}).then((res)=>{

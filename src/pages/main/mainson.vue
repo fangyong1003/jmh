@@ -121,15 +121,15 @@ export default {
       indexs:1,
       index:0,
       demo:[{
-        url: 'http://www.junmenghui.com:8081',
+        url: 'http://www.junmenghui.com',
         img: require('@/assets/img/banner3.png'),
         title: ''
       },{
-        url: 'http://www.junmenghui.com:8081/institute.html',
+        url: 'http://www.junmenghui.com/institute.html',
         img: require('@/assets/img/banner2.png'),
         title: ''
       },{
-        url: 'http://www.junmenghui.com:8081/union.html',
+        url: 'http://www.junmenghui.com/union.html',
         img: require('@/assets/img/banner.png'),
         title: ''
       }],
