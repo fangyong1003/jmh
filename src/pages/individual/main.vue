@@ -5,7 +5,7 @@
         <cell is-link link="/main/mainson">
           <img slot="icon" width="25" src="@/assets/img/people.png">
           <span slot="value" style="font-size:12px;color:#e70001">企业合作、导师入驻、城市合伙人</span>
-          <span slot="title" style="font-size:14px;">加入军梦会</span>
+          <span slot="title" style="font-size:14px;">加入军梦汇</span>
         </cell>
       </group>
       <scroller :use-pullup="showUp" :pullup-config="upobj" :bounce="isbounce" v-model="scrollerStatus" @on-pullup-loading="onScrollBottom"    style="width:100%" height="-46px" ref="scroller">
