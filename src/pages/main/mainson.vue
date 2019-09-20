@@ -1,6 +1,6 @@
 <template>
   <div >
-    <swiper :auto="true" :list="demo" v-model="indexs"></swiper>
+    <swiper height="130px" :auto="true" :list="demo" v-model="indexs"></swiper>
     <tab>
      <tab-item selected @on-item-click="onItemClick(1)">企业加盟</tab-item>
      <tab-item @on-item-click="onItemClick(2)">导师加盟</tab-item>

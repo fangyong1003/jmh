@@ -1,7 +1,7 @@
 <template>
   <div >
       <!-- <scroller :use-pullup="showUp" :pullup-config="upobj" :bounce="isbounce" v-model="scrollerStatus" @on-pullup-loading="onScrollBottom"    style="width:100%" height="-46px" ref="scroller"> -->
-    <swiper :auto="true" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
+    <swiper :auto="true" height="130px" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
     <group style="margin-top:-20px;" >
         <cell >
           <img slot="icon" width="28" src="@/assets/img/vip.png">

@@ -1,6 +1,6 @@
 <template>
   <div >
-    <swiper :auto="true" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
+    <swiper :auto="true" height="130px" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
     <div style="padding-bottom:70px;">
       <div v-for="(column,index) in list" class="column" @click="go(column.id)">
           <div class="imgbox" >

@@ -1,6 +1,6 @@
 <template>
   <div >
-    <swiper :auto="true" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
+    <swiper :auto="true" height="130px" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
     <group style="margin-top:-20px;" >
         <cell is-link link="/main/mainson">
           <img slot="icon" width="25" src="@/assets/img/people.png">
@@ -19,7 +19,7 @@
                      <span>{{column.jobName}}</span>
                    </div>
                    <div class="pay">
-                     <span>{{column.salaryRange}}元/月</span>
+                     <span>{{column.salaryRange}}</span>
                    </div>
                    <div class="condition">
                      <span>{{column.location}} | {{column.jobExpValue}} | {{column.eduValue}}</span>
@@ -109,7 +109,7 @@ export default {
     }
   },
   created(){
-      empower();
+      // empower();
     this.getList();
   },
   methods: {
