@@ -109,7 +109,7 @@ export default {
     }
   },
   created(){
-      // empower();
+      empower();
     this.getList();
   },
   methods: {
