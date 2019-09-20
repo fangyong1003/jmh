@@ -74,11 +74,16 @@ export default {
         {
           id:'3',
           url:require('@/assets/img/c3.png'),
-          tag:['高薪','好就业'],
+          tag:['退伍军人100%就业'],
         },
         {
           id:'4',
           url:require('@/assets/img/c4.png'),
+          tag:['退伍军人100%就业'],
+        },
+        {
+          id:'5',
+          url:require('@/assets/img/c5.png'),
           tag:['退伍军人100%就业'],
         },
       ],
