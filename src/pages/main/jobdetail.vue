@@ -6,7 +6,7 @@
              <span>{{column.jobName}}</span>
            </div>
            <div class="pay">
-             <span>{{column.salaryRange}}元/月</span>
+             <span>{{column.salaryRange}}</span>
            </div>
            <div class="requ">
              <span>{{column.location}} | {{column.jobExpValue}} | {{column.eduValue}}</span>
@@ -24,7 +24,6 @@
              {{column.jobDesc}}
            </p>
       </card>
-  <div class="bottomtite">浙江军梦网络科技有限公司    浙ICP备16020692号-1</div>
   </div>
 </template>
 

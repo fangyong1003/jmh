@@ -48,7 +48,6 @@
           {{column.introduce}}
         </div>
    </card>
-  <div class="bottomtite">浙江军梦网络科技有限公司    浙ICP备16020692号-1</div>
   </div>
 </template>
 

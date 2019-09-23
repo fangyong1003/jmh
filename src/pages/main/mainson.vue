@@ -105,7 +105,6 @@
           <x-button plain style="margin-top:20px;margin-bottom:40px" @click.native="submit">提交信息，免费获得更多加盟资讯</x-button>
         </p>
  </card>
-  <div class="bottomtite">浙江军梦网络科技有限公司    浙ICP备16020692号-1</div>
   </div>
 </template>
 
@@ -119,7 +118,7 @@ export default {
   data () {
     return {
       indexs:1,
-      index:0,
+      index:1,
       demo:[{
         url: 'http://www.junmenghui.com',
         img: require('@/assets/img/banner3.png'),
