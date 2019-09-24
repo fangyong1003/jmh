@@ -5,7 +5,7 @@
           <img src="@/assets/img/vip.png" class="vanta">
           <div class="name">
             <div>{{$store.state.company.companyName}}</div>
-            <img style="margin-top:10px" src="@/assets/img/tag.png">
+            <img style="margin-top:10px" src="@/assets/img/tag.png" style="width:135px">
           </div>
         </div>
         <div class="colbox">
@@ -94,7 +94,7 @@ export default {
 }
 .name{
   float: left;
-  margin-top: 25px;
+  margin-top: 20px;
   font-size:16px;
   color:#333333;
 }
