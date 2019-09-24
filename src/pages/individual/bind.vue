@@ -11,7 +11,7 @@
       <span class="ui-code" @click="getCode()">{{ codeVal }}</span>
     </group>
 		<div style="margin-left:30px;margin-top:10px">
-			<check-icon type="plain" :value.sync="isagree">同意<a style="color:rgb(30, 110, 183)" @click="show=true">《军梦汇用户服务协议》</a></check-icon>
+			<check-icon type="plain" :value.sync="isagree"><span style="color:#fff">同意<a style="color:rgb(30, 110, 183)" @click="show=true">《军梦汇用户服务协议》</a></span></check-icon>
 		</div>
     <box gap="10px 10px">
       <x-button plain style="background: #fff;border-color:#ccc;color:#1e6eb7;font-size:18px;margin-top:30px;font-weight:bold" @click.native="register">确定绑定</x-button>
