@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div style="background:#efefef">
     <swiper :auto="true" height="130px" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
     <group style="margin-top:-20px;" >
         <cell is-link link="/main/mainson">
@@ -10,8 +10,8 @@
       </group>
       <scroller :use-pullup="showUp" :pullup-config="upobj" :bounce="isbounce" v-model="scrollerStatus" @on-pullup-loading="onScrollBottom"    style="width:100%" height="-46px" ref="scroller">
       <div style="padding-bottom:70px;">
-        <div v-for="(column,index) in list">
-           <flexbox :gutter="0" style="background:#fff;margin-top:10px" @click.native="job(column.jobId)">
+        <div v-for="(column,index) in list" style="margin-top:10px">
+           <flexbox :gutter="0" style="background:#fff" @click.native="job(column.jobId)">
               <flexbox-item :span="2/3">
                 <div class="flex-demo">
                  <div >
@@ -32,7 +32,7 @@
             </flexbox-item>
               <flexbox-item>
                 <div class="pp">
-                  <img src="@/assets/img/lt.png">
+                  <img src="@/assets/img/lt.png" style="width:50px">
                 </div>
             </flexbox-item>
             </flexbox>

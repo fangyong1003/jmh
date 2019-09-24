@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div style="background:#efefef">
       <!-- <scroller :use-pullup="showUp" :pullup-config="upobj" :bounce="isbounce" v-model="scrollerStatus" @on-pullup-loading="onScrollBottom"    style="width:100%" height="-46px" ref="scroller"> -->
     <swiper :auto="true" height="130px" :list="demo" v-model="index" @on-index-change="onIndexChange"></swiper>
     <group style="margin-top:-20px;" >
@@ -9,8 +9,8 @@
         </cell>
       </group>
       <div style="padding-bottom:70px;">
-        <div v-for="(column,index) in list" @click="godetail(column.wantedId)">
-           <div  style="background:#fff;margin-top:10px" >
+        <div v-for="(column,index) in list" @click="godetail(column.wantedId)" style="margin-top:10px">
+           <div  style="background:#fff" >
                 <div class="flex-demo">
                    <div class="jobName">
                       <span class="col">{{column.wantedName}} </span>

@@ -9,22 +9,23 @@
       <x-input v-model="password" title="密码:"
                required placeholder="请输入密码"></x-input>
     </group>
-
+      <div class="forget" @click="forgets">忘记密码？</div>
     <box gap="10px 10px">
       <x-button plain style="background: #fff;border-color:#ccc;color:#1e6eb7;font-size:18px;margin-top:40px;font-weight:bold" @click.native="submit">登录</x-button>
     </box>
+    <div style="text-align:center;margin-top:10px;color:#fff" @click="gopush()">没有企业账号？点这里</div>
   </view-box>
 </div>
 </template>
 <script>
   import {
-    ViewBox, XHeader, Box, XInput, XButton, Group
+    ViewBox, XHeader, Box, XInput, XButton, Group,
   } from 'vux';
   import API from '@/api/wxmp'
   export default {
     name: 'signIn',
     components: {
-      ViewBox, XHeader, Box, XInput, XButton, Group
+      ViewBox, XHeader, Box, XInput, XButton, Group,
     },
     data(){
       return {
@@ -62,6 +63,15 @@
 					}
         })
       },
+      forgets(){
+        this.$vux.alert.show({
+          title: '请联系客服',
+          content:'400-8277-616（08:00-22:00）'
+        });
+      },
+      gopush(){
+        this.$router.push('/main/mainson');
+      }
     }
   }
 </script>
@@ -109,4 +119,10 @@ font-weight:bold
 		width: 90%;
 		margin-left: 5%
 	}
+  .forget{
+    float:right;
+    color:#fff;
+    margin-top:5px;
+    font-size:13px;
+  }
 </style>

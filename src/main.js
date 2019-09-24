@@ -6,9 +6,10 @@ import router from "./router";
 import App from './App'
 import store from "./store/index";
 import { WechatPlugin,AjaxPlugin  } from 'vux'
-import  { ToastPlugin } from 'vux'
+import  { ToastPlugin,AlertPlugin  } from 'vux'
 // import { empower } from '@/utils/getWechatUserInfo.js'
 Vue.use(ToastPlugin)
+Vue.use(AlertPlugin)
 import './assets/style.css';
 Vue.use(WechatPlugin)
 Vue.use(AjaxPlugin)
