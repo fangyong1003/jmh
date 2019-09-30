@@ -5,7 +5,7 @@
           <img src="@/assets/img/vip.png" class="vanta">
           <div class="name">
             <div>{{$store.state.company.companyName}}</div>
-            <img style="margin-top:10px" src="@/assets/img/tag.png" style="width:135px">
+            <img style="margin-top:10px;width:135px" src="@/assets/img/tag.png" >
           </div>
         </div>
         <div class="colbox">
