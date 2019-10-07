@@ -11,7 +11,7 @@ import Learn from '@/pages/individual/learn'
 import Learnson from '@/pages/learn/learnson'
 import Bind from '@/pages/individual/bind'
 import NotFound from '@/pages/404'
-
+import Meng from '@/pages/meng'
 import Reg from '@/pages/company/register'
 import Cmain from '@/pages/company/main'
 import Cmine from '@/pages/company/mine'
@@ -21,6 +21,7 @@ import Addjob from '@/pages/company/addjob'
 import Editjob from '@/pages/company/editjob'
 import Learnsons from '@/pages/company/learnson'
 import Job from '@/pages/company/detail'
+
 Vue.use(Router)
 
 let router = new Router({
@@ -103,6 +104,14 @@ let router = new Router({
       component: About,
       meta: {
         title: '关于军梦汇'
+      }
+    },
+    {
+      path: '/meng',
+      name: 'meng',
+      component: Meng,
+      meta: {
+        title: '军才联盟'
       }
     },
     {
